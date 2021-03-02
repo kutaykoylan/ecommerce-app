@@ -1,0 +1,27 @@
+server:
+  port: 8762
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+      routes:
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - name: Path
+              args:
+                pattern: "/orders/**"
+        - id: payment-service
+          uri: lb://payment-service
+          predicates:
+            - name: Path
+              args:
+                pattern: "/payments/**"
+        - id: stock-service
+          uri: lb://stock-service
+          predicates:
+            - name: Path
+              args:
+                pattern: "/stocks/**"

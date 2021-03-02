@@ -1,0 +1,12 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: discovery-service
+  cloud:
+    kubernetes.discovery.enabled: false
+    kubernetes.ribbon.enabled: false
+    kubernetes.enabled: false
+eureka:
+  instance:
+    preferIpAddress: true
