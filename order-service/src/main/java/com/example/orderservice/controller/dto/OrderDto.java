@@ -1,33 +1,37 @@
 package com.example.orderservice.controller.dto;
 
 import com.example.orderservice.entity.OrderState;
-import lombok.Data;
+import lombok.*;
 
-@Data
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 public class OrderDto {
 
-    private final Long orderId;
+    private Long orderId;
 
-    private final OrderState state;
+    private OrderState state;
 
-    private final long price;
+    private long price;
 
-    private final String stockId;
+    private String stockId;
 
-    private final int reservedStockVersion;
+    private int reservedStockVersion;
 
-    private final int orderAmount;
+    private int orderAmount;
 
-    private final String paymentAddress;
+    private String paymentAddress;
 
-    private final float amount;
+    private float amount;
 
-    private final String cardInformation;
+    private String cardInformation;
 
-    private final Long paymentId;
+    private Long paymentId;
 
-    private final String address;
+    private String address;
 
-    private final String description;
+    private String description;
 
 }

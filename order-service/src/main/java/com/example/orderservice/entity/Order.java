@@ -6,40 +6,48 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.*;
 
 
-
-@Getter
 @Setter
-@AllArgsConstructor
+@Getter
 @NoArgsConstructor
-@javax.persistence.Entity(name = "ORDERS")
+@Entity
+@Table(name = "ORDERS")
 @SequenceGenerator(name = "idgen", sequenceName = "ORDER_SEQ")
 public class Order extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
+    @Column
     private OrderState state;
 
+    @Column
     private long price;
 
+    @Column
     private String stockId;
 
+    @Column
     private int reservedStockVersion;
 
+    @Column
     private int orderAmount;
 
+    @Column
     private String paymentAddress;
 
+    @Column
     private float amount;
 
+    @Column
     private String cardInformation;
 
+    @Column
     private String paymentId;
 
+    @Column
     private String address;
 
+    @Column
     private String description;
 }
