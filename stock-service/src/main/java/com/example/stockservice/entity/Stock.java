@@ -1,19 +1,19 @@
 package com.example.stockservice.entity;
 
 import com.example.stockservice.common.BaseEntity;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Table;
 
 
+@EqualsAndHashCode(callSuper = true)
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Entity(name = "STOCK")
+@Entity
+@Table(name = "STOCK")
 public class Stock extends BaseEntity {
 
     private String stockName;
