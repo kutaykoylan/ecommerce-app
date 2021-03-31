@@ -1,4 +1,4 @@
-package com.example.orderservice.common;
+package com.example.orderservice.common.data;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

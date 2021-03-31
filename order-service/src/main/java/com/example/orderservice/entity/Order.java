@@ -1,7 +1,6 @@
 package com.example.orderservice.entity;
 
-import com.example.orderservice.common.BaseEntity;
-import lombok.AllArgsConstructor;
+import com.example.orderservice.common.data.BaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

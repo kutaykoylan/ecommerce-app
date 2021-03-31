@@ -3,12 +3,10 @@ package com.example.orderservice.controller.dto;
 import com.example.orderservice.entity.OrderState;
 import lombok.*;
 
-@Setter
-@Getter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-public class OrderDto {
+public class FindOrderResponseDto {
 
     private Long orderId;
 

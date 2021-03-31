@@ -1,6 +1,7 @@
 package com.example.orderservice.service;
 
 import com.example.orderservice.entity.Order;
+import com.example.orderservice.entity.PaymentInformation;
 import com.example.orderservice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -26,5 +27,20 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public Page<Order> findAll(int page, int size) {
         return orderRepository.findAll(PageRequest.of(page, size));
+    }
+
+    @Override
+    public void createOrder(Order order) {
+        orderRepository.save(order);
+    }
+
+    @Override
+    public void cancelOrder(Long orderId) {
+
+    }
+
+    @Override
+    public void processOrder(Long orderId, PaymentInformation paymentInformation) {
+
     }
 }
