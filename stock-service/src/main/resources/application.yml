@@ -20,6 +20,14 @@ spring:
       hibernate:
         globally_quoted_identifiers: true
         jdbc.lob.non_contextual_creation: true
+logging:
+  level:
+    root: INFO
+    kafka.*: WARN
+    org.springframework.*: INFO
+    org.neo4j.*: INFO
+    org.apache.kafka.*: WARN
+    liquibase.integration.spring.SpringLiquibase: ERROR
 eureka:
   instance:
     prefer-ip-address: true

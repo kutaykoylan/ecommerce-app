@@ -25,3 +25,11 @@ spring:
             - name: Path
               args:
                 pattern: "/stocks/**"
+logging:
+  level:
+    root: INFO
+    kafka.*: WARN
+    org.springframework.*: INFO
+    org.neo4j.*: INFO
+    org.apache.kafka.*: WARN
+    liquibase.integration.spring.SpringLiquibase: ERROR

@@ -3,6 +3,7 @@ package com.example.orderservice.controller;
 
 import com.example.orderservice.common.exception.OrderException;
 import com.example.orderservice.controller.dto.CreateOrderRequestDTO;
+import com.example.orderservice.controller.dto.CreateOrderResponseDTO;
 import com.example.orderservice.controller.dto.FindOrderResponseDto;
 import com.example.orderservice.common.response.ResponseDTO;
 import com.example.orderservice.controller.dto.ProcessOrderRequestDTO;
@@ -25,7 +26,7 @@ public interface OrderController {
     Page<FindOrderResponseDto> findOrders(@RequestParam(value = "page", required = false, defaultValue = "0") int page, @RequestParam(value = "size", required = false, defaultValue = "10") int size);
 
     @PostMapping(value = "/orders")
-    ResponseEntity<ResponseDTO> createOrder(@RequestBody @Valid CreateOrderRequestDTO createOrderRequestDTO);
+    ResponseEntity<CreateOrderResponseDTO> createOrder(@RequestBody @Valid CreateOrderRequestDTO createOrderRequestDTO);
 
     @DeleteMapping(value = "/orders/{orderId}")
     ResponseEntity<ResponseDTO> cancelOrder(@PathVariable("orderId") String orderId) throws OrderException;
