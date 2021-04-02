@@ -6,7 +6,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class FindOrderResponseDto {
+public class FindOrderResponseDTO {
 
     private Long orderId;
 

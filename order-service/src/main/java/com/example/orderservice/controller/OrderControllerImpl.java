@@ -5,7 +5,7 @@ import com.example.orderservice.common.exception.OrderException;
 import com.example.orderservice.common.response.ResponseDTO;
 import com.example.orderservice.controller.dto.CreateOrderRequestDTO;
 import com.example.orderservice.controller.dto.CreateOrderResponseDTO;
-import com.example.orderservice.controller.dto.FindOrderResponseDto;
+import com.example.orderservice.controller.dto.FindOrderResponseDTO;
 import com.example.orderservice.controller.dto.ProcessOrderRequestDTO;
 import com.example.orderservice.entity.Order;
 import com.example.orderservice.mapper.OrderMapper;
@@ -32,18 +32,18 @@ public class OrderControllerImpl implements OrderController {
     private final OrderMapper orderMapper;
 
     @Override
-    public FindOrderResponseDto findOrderById(Long orderId) {
+    public FindOrderResponseDTO findOrderById(Long orderId) {
         return orderMapper.mapToFindOrderResponseDTO(orderService.findOrderById(orderId));
     }
 
     @Override
-    public FindOrderResponseDto findOrderByIdAndVersion(Long orderId, Long version)  {
+    public FindOrderResponseDTO findOrderByIdAndVersion(Long orderId, Long version)  {
         return orderMapper.mapToFindOrderResponseDTO(orderService.findOrderByIdAndVersion(orderId,version));
     }
 
     @Override
-    public Page<FindOrderResponseDto> findOrders(int page, int size) {
-        List<FindOrderResponseDto> orders = orderService.findAll(page, size).stream().map(orderMapper::mapToFindOrderResponseDTO).collect(Collectors.toList());
+    public Page<FindOrderResponseDTO> findOrders(int page, int size) {
+        List<FindOrderResponseDTO> orders = orderService.findAll(page, size).stream().map(orderMapper::mapToFindOrderResponseDTO).collect(Collectors.toList());
         return new PageImpl(orders);
     }
 

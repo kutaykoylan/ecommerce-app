@@ -4,7 +4,7 @@ package com.example.orderservice.controller;
 import com.example.orderservice.common.exception.OrderException;
 import com.example.orderservice.controller.dto.CreateOrderRequestDTO;
 import com.example.orderservice.controller.dto.CreateOrderResponseDTO;
-import com.example.orderservice.controller.dto.FindOrderResponseDto;
+import com.example.orderservice.controller.dto.FindOrderResponseDTO;
 import com.example.orderservice.common.response.ResponseDTO;
 import com.example.orderservice.controller.dto.ProcessOrderRequestDTO;
 import org.springframework.data.domain.Page;
@@ -17,13 +17,13 @@ import javax.validation.Valid;
 public interface OrderController {
 
     @GetMapping(value = "/orders/{orderId}")
-    FindOrderResponseDto findOrderById(@PathVariable("orderId") Long orderId);
+    FindOrderResponseDTO findOrderById(@PathVariable("orderId") Long orderId);
 
     @GetMapping(value = "/orders/{orderId}/{version}")
-    FindOrderResponseDto findOrderByIdAndVersion(@PathVariable("orderId") Long orderId, @PathVariable("version") Long version) ;
+    FindOrderResponseDTO findOrderByIdAndVersion(@PathVariable("orderId") Long orderId, @PathVariable("version") Long version) ;
 
     @GetMapping(value = "/orders")
-    Page<FindOrderResponseDto> findOrders(@RequestParam(value = "page", required = false, defaultValue = "0") int page, @RequestParam(value = "size", required = false, defaultValue = "10") int size);
+    Page<FindOrderResponseDTO> findOrders(@RequestParam(value = "page", required = false, defaultValue = "0") int page, @RequestParam(value = "size", required = false, defaultValue = "10") int size);
 
     @PostMapping(value = "/orders")
     ResponseEntity<CreateOrderResponseDTO> createOrder(@RequestBody @Valid CreateOrderRequestDTO createOrderRequestDTO);
