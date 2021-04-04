@@ -21,7 +21,7 @@ public class Order extends BaseEntity {
     private OrderState state;
 
     @Column
-    private long price;
+    private long price;// unit price
 
     @Column
     private String stockId;
@@ -30,13 +30,13 @@ public class Order extends BaseEntity {
     private int reservedStockVersion;
 
     @Column
-    private int orderAmount;
+    private int orderAmount;// amount of order that is bought
 
     @Column
     private String paymentAddress;
 
     @Column
-    private float amount;
+    private float amount; // total price
 
     @Column
     private String cardInformation;
