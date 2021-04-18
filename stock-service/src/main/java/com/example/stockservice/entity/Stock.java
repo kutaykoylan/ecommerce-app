@@ -20,6 +20,8 @@ public class Stock extends BaseEntity {
 
     private long remainingStock;
 
+    private long price;
+
     @Enumerated(EnumType.STRING)
     private StockState state;
 
