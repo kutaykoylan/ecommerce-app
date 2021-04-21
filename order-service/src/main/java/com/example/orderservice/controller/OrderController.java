@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-//import com.querydsl.core.types.Predicate;
 
 public interface OrderController {
 

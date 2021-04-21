@@ -13,15 +13,15 @@ import java.util.List;
 
 public interface StockControllerApi {
 
-    @GetMapping(value = "/stock/")
+    @GetMapping(value = "/stocks")
     List<Stock> findStocks();
 
-    @GetMapping(value = "/stock/{stockId}")
+    @GetMapping(value = "/stocks/{stockId}")
     Stock findStockById(@PathVariable("stockId") Long stockId);
 
-    @PostMapping(value = "/stock/")
+    @PostMapping(value = "/stocks")
     Stock createStock(@RequestBody @Valid CreateStockRequestDTO createStockRequestDTO);
 
-    @PostMapping(value = "/stock/{stockId}")
+    @PostMapping(value = "/stocks/{stockId}")
     Stock addStock(@PathVariable("stockId") Long stockId, @RequestBody @Valid AddStockRequestDTO addStockRequestDTO);
 }
