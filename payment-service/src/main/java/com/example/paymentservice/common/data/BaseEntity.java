@@ -1,4 +1,4 @@
-package com.example.paymentservice.common;
+package com.example.paymentservice.common.data;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

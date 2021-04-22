@@ -22,7 +22,6 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class StockControllerImpl implements StockController {
     private final StockService stockService;
-
     private final StockMapper stockMapper;
 
     @Override
@@ -34,7 +33,7 @@ public class StockControllerImpl implements StockController {
 
     @Override
     public StockResponseDTO findStockById(Long stockId) {
-        return stockMapper.mapToStockResponseDTO(stockService.findById(stockId));
+        return stockMapper.mapToStockResponseDTO(stockService.findStockById(stockId));
     }
 
     @Override

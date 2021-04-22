@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 
 
 public interface StockService {
-    Stock findById(Long stockId) ;
+    Stock findStockById(Long stockId) ;
 
     Page<Stock> findAll(int page, int size);
 

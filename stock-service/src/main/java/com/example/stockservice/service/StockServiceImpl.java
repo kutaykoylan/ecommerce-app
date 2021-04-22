@@ -15,7 +15,7 @@ public class StockServiceImpl implements StockService {
     private final StockRepository stockRepository;
 
     @Override
-    public Stock findById(Long stockId) { return stockRepository.findById(stockId).orElse(null); }
+    public Stock findStockById(Long stockId) { return stockRepository.findById(stockId).orElse(null); }
 
     @Override
     public Page<Stock> findAll(int page, int size) { return stockRepository.findAll(PageRequest.of(page, size)); }

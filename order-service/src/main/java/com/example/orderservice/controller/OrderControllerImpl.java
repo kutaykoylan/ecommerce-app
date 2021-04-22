@@ -26,9 +26,7 @@ import java.util.stream.Collectors;
 @ResponseStatus( HttpStatus.OK )
 @RequiredArgsConstructor
 public class OrderControllerImpl implements OrderController {
-
     private final OrderService orderService;
-
     private final OrderMapper orderMapper;
 
     @Override

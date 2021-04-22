@@ -1,6 +1,6 @@
 package com.example.paymentservice.entity;
 
-import com.example.paymentservice.common.BaseEntity;
+import com.example.paymentservice.common.data.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
