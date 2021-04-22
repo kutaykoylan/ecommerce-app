@@ -50,7 +50,7 @@ public class OrderControllerImpl implements OrderController {
     @Override
     public ResponseEntity<CreateOrderResponseDTO> createOrder(@Valid CreateOrderRequestDTO createOrderRequestDTO) {
         if (createOrderRequestDTO == null) {
-            throw new BadRequestException("You send an empty activity");
+            throw new BadRequestException("You send an empty Order");
         } else{
             Order orderThatIsSaved = orderService.createOrder(orderMapper.mapToEntity(createOrderRequestDTO));
             return new ResponseEntity<>(orderMapper.mapToCreateOrderResponseDTO(orderThatIsSaved),HttpStatus.OK);

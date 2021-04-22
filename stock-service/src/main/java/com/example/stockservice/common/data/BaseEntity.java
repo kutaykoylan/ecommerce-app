@@ -1,4 +1,4 @@
-package com.example.stockservice.common;
+package com.example.stockservice.common.data;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

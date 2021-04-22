@@ -1,6 +1,6 @@
 package com.example.stockservice.entity;
 
-import com.example.stockservice.common.BaseEntity;
+import com.example.stockservice.common.data.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
