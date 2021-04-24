@@ -36,4 +36,12 @@ public class StockService {
         stock.setRemainingStock(currentStock);
         return stockRepository.save(stock);
     }
+
+    public void decreaseStock(String stockId) {
+        Stock stock = stockRepository.findById(Long.parseLong(stockId)).orElse(null);
+        long remainingStock = stock.getRemainingStock();
+        remainingStock -= 1;
+        stock.setRemainingStock(remainingStock);
+        stockRepository.save(stock);
+    }
 }

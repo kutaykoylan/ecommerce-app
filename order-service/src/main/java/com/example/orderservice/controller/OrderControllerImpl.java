@@ -31,6 +31,7 @@ public class OrderControllerImpl implements OrderController {
 
     private final OrderMapper orderMapper;
 
+
     @Override
     public FindOrderResponseDTO findOrderById(Long orderId) {
         return orderMapper.mapToFindOrderResponseDTO(orderService.findOrderById(orderId));
@@ -59,11 +60,15 @@ public class OrderControllerImpl implements OrderController {
 
     @Override
     public ResponseEntity<ResponseDTO> cancelOrder(String orderId) throws OrderException {
+        // Delete order
+        // Call kafka to increase stock
         return null;
     }
 
     @Override
     public ResponseEntity<ResponseDTO> processOrder(String orderId, @Valid ProcessOrderRequestDTO dto) throws OrderException {
+        // call kafka to create payment
+        // return json response as payment created
         return null;
     }
 }

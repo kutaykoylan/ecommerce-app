@@ -4,8 +4,10 @@ import com.example.orderservice.entity.Order;
 import com.example.orderservice.entity.PaymentInformation;
 import com.example.orderservice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -13,6 +15,9 @@ import org.springframework.stereotype.Service;
 public class OrderServiceImpl implements OrderService{
 
     private final OrderRepository orderRepository;
+
+    @Autowired
+    private KafkaTemplate<String, Object> kafkaTemplate;
 
     @Override
     public Order findOrderById(Long orderId) {
@@ -29,8 +34,11 @@ public class OrderServiceImpl implements OrderService{
         return orderRepository.findAll(PageRequest.of(page, size));
     }
 
+    // Should call kafka to send reserve stock event
     @Override
     public Order createOrder(Order order) {
+        String stockId = order.getStockId();
+        kafkaTemplate.send("reserve-stock", stockId);
         return orderRepository.save(order);
     }
 

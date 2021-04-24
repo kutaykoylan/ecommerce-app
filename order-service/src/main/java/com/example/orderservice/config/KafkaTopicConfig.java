@@ -17,4 +17,9 @@ public class KafkaTopicConfig {
         return TopicBuilder.name("release-stock").build();
     }
 
+    @Bean
+    public NewTopic processOrder() {
+        return TopicBuilder.name("process-order").build();
+    }
+
 }
