@@ -1,17 +1,30 @@
 package com.example.orderservice.service;
 
+import com.example.orderservice.common.exception.OrderException;
 import com.example.orderservice.entity.Order;
+import com.example.orderservice.entity.OrderState;
 import com.example.orderservice.entity.PaymentInformation;
+import com.example.orderservice.kafka.dto.ProcessPaymentDTO;
+import com.example.orderservice.kafka.dto.ReleaseStockDTO;
+import com.example.orderservice.kafka.dto.ReserveStockDTO;
+import com.example.orderservice.kafka.producer.OrderProducer;
 import com.example.orderservice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
     private final OrderRepository orderRepository;
+    @Autowired
+    private final OrderProducer orderProducer;
+
+    @Autowired
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
     @Override
     public Order findOrderById(Long orderId) {
@@ -34,12 +47,26 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public void cancelOrder(Long orderId) {
-
+    public void cancelOrder(Long orderId) throws OrderException {
+        Order order = orderRepository.findById(orderId).orElse(null);
+        if (order.getState() != OrderState.PAID) {
+            throw new OrderException("Order state is not valid for this operation");
+        }
+        String stockId = order.getStockId();
+        ReleaseStockDTO releaseStockDTO = new ReleaseStockDTO(stockId, order.getOrderAmount());
+        orderProducer.sendReleaseStockEvent(releaseStockDTO);
     }
 
     @Override
-    public void processOrder(Long orderId, PaymentInformation paymentInformation) {
-
+    public void processOrder(Long orderId, PaymentInformation paymentInformation) throws OrderException {
+        Order order = orderRepository.findById(orderId).orElse(null);
+        if (order.getState() != OrderState.INITIAL) {
+            throw new OrderException("Order state is not valid for this operation");
+        }
+        String stockId = order.getStockId();
+        ReserveStockDTO reserveStockDTO = new ReserveStockDTO(stockId, order.getOrderAmount());
+        ProcessPaymentDTO processPaymentDTO = new ProcessPaymentDTO(paymentInformation);
+        orderProducer.sendReserveStockEvent(reserveStockDTO);
+        orderProducer.sendProcessPaymentEvent(processPaymentDTO);
     }
 }

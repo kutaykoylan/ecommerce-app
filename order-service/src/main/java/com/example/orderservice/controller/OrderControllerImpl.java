@@ -57,7 +57,8 @@ public class OrderControllerImpl implements OrderController {
 
     @Override
     public ResponseEntity<ResponseDTO> cancelOrder(Long orderId) throws OrderException {
-        return null;
+        orderService.cancelOrder(orderId);
+        return new ResponseEntity<>(new ResponseDTO("Order is cancelled"),HttpStatus.OK);
     }
 
     @Override
