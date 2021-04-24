@@ -7,6 +7,12 @@ import org.springframework.kafka.config.TopicBuilder;
 
 @Configuration
 public class KafkaTopicConfig {
+
+    @Bean
+    public NewTopic processPayment(){
+        return TopicBuilder.name("process-payment").build();
+    }
+
     @Bean
     public NewTopic stockReserved() {
         return TopicBuilder.name("reserve-stock").build();
