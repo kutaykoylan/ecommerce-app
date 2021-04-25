@@ -60,6 +60,8 @@ public class OrderServiceImpl implements OrderService{
         String stockId = order.getStockId();
         ReserveStockDTO reserveStockDTO = new ReserveStockDTO(stockId, order.getOrderAmount());
         ProcessPaymentDTO processPaymentDTO = new ProcessPaymentDTO(orderId,paymentInformation);
+        order.setState(OrderState.PAYMENT_READY);
+        orderRepository.save(order);
         orderProducer.sendReserveStockEvent(reserveStockDTO);
         orderProducer.sendProcessPaymentEvent(processPaymentDTO);
     }
