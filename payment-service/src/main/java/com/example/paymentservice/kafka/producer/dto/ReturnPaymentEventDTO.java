@@ -3,13 +3,13 @@ package com.example.paymentservice.kafka.producer.dto;
 import com.example.paymentservice.kafka.producer.enums.EventType;
 import lombok.*;
 
-@Data
+@Value
 @Builder
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ReturnPaymentEventDTO {
-    private Long orderId;
+     Long orderId;
 
-    private float amount;
+    float amount;
 
-    private EventType eventType = EventType.OP_SINGLE;
+    EventType eventType = EventType.OP_SINGLE;
 }
