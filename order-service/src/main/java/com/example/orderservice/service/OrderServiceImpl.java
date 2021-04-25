@@ -65,4 +65,11 @@ public class OrderServiceImpl implements OrderService{
         orderProducer.sendReserveStockEvent(reserveStockDTO);
         orderProducer.sendProcessPaymentEvent(processPaymentDTO);
     }
+
+    @Override
+    public void setOrderState(Long orderId, OrderState orderState) {
+        Order order = orderRepository.findById(orderId).orElse(null);
+        order.setState(orderState);
+        orderRepository.save(order);
+    }
 }

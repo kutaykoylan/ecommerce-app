@@ -22,7 +22,6 @@ public class PaymentConsumerService {
         PaymentEventDTO successfulPaymentEventDTO = PaymentEventDTO.builder()
                 .paymentAddress(processPaymentDTO.getPaymentInformation().getPaymentAddress())
                 .orderId(processPaymentDTO.getOrderId())
-                .eventType(EventType.EVENT)
                 .build();
         if(processPaymentDTO.getPaymentInformation().getAmount()>2000)
             throw new PaymentException("Payment amount cannot be more than 2000");
@@ -30,7 +29,6 @@ public class PaymentConsumerService {
             PaymentEventDTO failedPaymentEventDTO = PaymentEventDTO.builder()
                     .orderId(processPaymentDTO.getOrderId())
                     .paymentAddress(processPaymentDTO.getPaymentInformation().getPaymentAddress())
-                    .eventType(EventType.OP_FAIL)
                     .build();
             paymentProducerService.sendFailPaymentEvent(failedPaymentEventDTO);
         }

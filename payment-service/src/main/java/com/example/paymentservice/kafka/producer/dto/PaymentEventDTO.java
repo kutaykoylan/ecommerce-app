@@ -14,6 +14,4 @@ public class PaymentEventDTO {
      String paymentAddress;
 
      String cardInformation;
-
-     EventType eventType;
 }
