@@ -1,6 +1,6 @@
-package com.example.orderservice.kafka.dto;
+package com.example.paymentservice.kafka.consumer.dto;
 
-import com.example.orderservice.entity.PaymentInformation;
+import com.example.paymentservice.entity.PaymentInformation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

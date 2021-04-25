@@ -1,4 +1,4 @@
-package com.example.paymentservice.event;
+package com.example.paymentservice.config;
 
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.admin.NewTopic;
@@ -37,5 +37,10 @@ public class KafkaTopicConfig {
     @Bean
     public NewTopic succeedPayment() {
         return TopicBuilder.name("success-payment").build();
+    }
+
+    @Bean
+    public NewTopic returnPayment() {
+        return TopicBuilder.name("return-payment").build();
     }
 }

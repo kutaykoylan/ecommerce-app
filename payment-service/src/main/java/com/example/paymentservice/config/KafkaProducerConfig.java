@@ -1,4 +1,4 @@
-package com.example.paymentservice.event.producer;
+package com.example.paymentservice.config;
 
 import com.fasterxml.jackson.databind.ser.std.StringSerializer;
 import org.apache.kafka.clients.producer.ProducerConfig;

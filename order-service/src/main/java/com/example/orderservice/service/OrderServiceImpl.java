@@ -10,21 +10,15 @@ import com.example.orderservice.kafka.dto.ReserveStockDTO;
 import com.example.orderservice.kafka.producer.OrderProducer;
 import com.example.orderservice.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
     private final OrderRepository orderRepository;
-    @Autowired
     private final OrderProducer orderProducer;
-
-    @Autowired
-    private final KafkaTemplate<String, Object> kafkaTemplate;
 
     @Override
     public Order findOrderById(Long orderId) {
@@ -65,7 +59,7 @@ public class OrderServiceImpl implements OrderService{
         }
         String stockId = order.getStockId();
         ReserveStockDTO reserveStockDTO = new ReserveStockDTO(stockId, order.getOrderAmount());
-        ProcessPaymentDTO processPaymentDTO = new ProcessPaymentDTO(paymentInformation);
+        ProcessPaymentDTO processPaymentDTO = new ProcessPaymentDTO(orderId,paymentInformation);
         orderProducer.sendReserveStockEvent(reserveStockDTO);
         orderProducer.sendProcessPaymentEvent(processPaymentDTO);
     }

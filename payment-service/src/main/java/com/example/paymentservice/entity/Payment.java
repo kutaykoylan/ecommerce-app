@@ -21,7 +21,7 @@ public class Payment extends BaseEntity {
 
     private String paymentAddress;
 
-    private String orderId;
+    private Long orderId;
 
     private float amount;
 

@@ -5,16 +5,15 @@ import com.example.stockservice.kafka.dto.ReserveStockDTO;
 import com.example.stockservice.service.StockService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 
 @Component
+@RequiredArgsConstructor
 public class StockEventsConsumer {
-    @Autowired
-    StockService stockService;
+    private final StockService stockService;
 
     @KafkaListener(topics = "reserve-stock",
             groupId ="stock-service")

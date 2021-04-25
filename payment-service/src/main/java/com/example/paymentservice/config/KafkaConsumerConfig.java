@@ -1,4 +1,4 @@
-package com.example.paymentservice.event.consumer;
+package com.example.paymentservice.config;
 
 import com.fasterxml.jackson.databind.deser.std.StringDeserializer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
