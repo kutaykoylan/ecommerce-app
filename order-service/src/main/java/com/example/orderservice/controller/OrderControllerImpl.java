@@ -56,12 +56,14 @@ public class OrderControllerImpl implements OrderController {
     }
 
     @Override
-    public ResponseEntity<ResponseDTO> cancelOrder(String orderId) throws OrderException {
-        return null;
+    public ResponseEntity<ResponseDTO> cancelOrder(Long orderId) throws OrderException {
+        orderService.cancelOrder(orderId);
+        return new ResponseEntity<>(new ResponseDTO("Order is cancelled"),HttpStatus.OK);
     }
 
     @Override
-    public ResponseEntity<ResponseDTO> processOrder(String orderId, @Valid ProcessOrderRequestDTO dto) throws OrderException {
-        return null;
+    public ResponseEntity<ResponseDTO> processOrder(Long orderId, @Valid ProcessOrderRequestDTO dto) throws OrderException {
+        orderService.processOrder(orderId,dto.getPaymentInformation());
+        return new ResponseEntity<>(new ResponseDTO("Order is processed"),HttpStatus.OK);
     }
 }

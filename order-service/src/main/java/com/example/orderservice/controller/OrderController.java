@@ -28,10 +28,10 @@ public interface OrderController {
     ResponseEntity<CreateOrderResponseDTO> createOrder(@RequestBody @Valid CreateOrderRequestDTO createOrderRequestDTO);
 
     @DeleteMapping(value = "/orders/{orderId}")
-    ResponseEntity<ResponseDTO> cancelOrder(@PathVariable("orderId") String orderId) throws OrderException;
+    ResponseEntity<ResponseDTO> cancelOrder(@PathVariable("orderId") Long orderId) throws OrderException;
 
     @PostMapping(value = "/orders/{orderId}/process")
-    ResponseEntity<ResponseDTO> processOrder(@PathVariable("orderId") String orderId, @RequestBody @Valid ProcessOrderRequestDTO dto) throws OrderException;
+    ResponseEntity<ResponseDTO> processOrder(@PathVariable("orderId") Long orderId, @RequestBody @Valid ProcessOrderRequestDTO dto) throws OrderException;
 
 
 }

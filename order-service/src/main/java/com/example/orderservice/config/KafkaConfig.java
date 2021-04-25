@@ -16,15 +16,15 @@ import java.util.Map;
 @Configuration
 public class KafkaConfig {
 
-    @Value(value = "${kafkaglobal.port}")
-    private String kafkaPort;
+    @Value(value = "${kafka.bootstrapAddress}")
+    private String bootstrapAddress;
     @Bean
     public ProducerFactory<String, Object> producerFactory()
     {
-        System.out.println(kafkaPort);
+        System.out.println(bootstrapAddress);
         Map<String,Object> config = new HashMap<>();
 
-        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:"+kafkaPort);
+        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
 

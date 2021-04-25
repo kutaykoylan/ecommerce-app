@@ -18,7 +18,7 @@ public class Order extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column
-    private OrderState state;
+    private OrderState state = OrderState.INITIAL;
 
     @Column
     private long price;// unit price

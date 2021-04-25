@@ -2,6 +2,7 @@ package com.example.stockservice.service;
 
 import com.example.stockservice.controller.dto.AddStockRequestDTO;
 import com.example.stockservice.entity.Stock;
+import com.example.stockservice.kafka.dto.ReserveStockDTO;
 import com.example.stockservice.repository.StockRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -32,9 +33,23 @@ public class StockServiceImpl implements StockService {
         return stockRepository.save(stock);
     }
 
+    @Override
+    public Stock decreaseStock(ReserveStockDTO reserveStockDTO) {
+        Stock stock = stockRepository.findById(Long.parseLong(reserveStockDTO.getStockId())).orElse(null);
+        decreaseStock((long) reserveStockDTO.getOrderAmount(), stock);
+        return stockRepository.save(stock);
+    }
+
     private void addStock(Long stockToAdd, Stock stock) {
         long currentStock = stock.getRemainingStock();
         currentStock +=stockToAdd;
         stock.setRemainingStock(currentStock);
     }
+
+    private void decreaseStock(Long stockToDecrease, Stock stock) {
+        long currentStock = stock.getRemainingStock();
+        currentStock -= stockToDecrease;
+        stock.setRemainingStock(currentStock);
+    }
+
 }
