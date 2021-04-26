@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ReserveStockDTO {
     private String stockId;
-    private int orderAmount;
+    private long orderAmount;
 }

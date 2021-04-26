@@ -36,7 +36,8 @@ public class StockServiceImpl implements StockService {
     @Override
     public Stock decreaseStock(ReserveStockDTO reserveStockDTO) {
         Stock stock = stockRepository.findById(Long.parseLong(reserveStockDTO.getStockId())).orElse(null);
-        decreaseStock((long) reserveStockDTO.getOrderAmount(), stock);
+        decreaseStock(reserveStockDTO.getOrderAmount(), stock);
+        System.out.println(stock.getId());
         return stockRepository.save(stock);
     }
 

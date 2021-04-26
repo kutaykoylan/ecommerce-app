@@ -19,20 +19,22 @@ public class PaymentConsumerService {
     @KafkaListener(topics = "process-payment", groupId = "payment-service")
     public void processPayment(String message) throws JsonProcessingException, PaymentException {
         ProcessPaymentDTO processPaymentDTO = getProcessPaymentDTO(message);
+        // TODO: Payment entity should be created
         PaymentEventDTO successfulPaymentEventDTO = PaymentEventDTO.builder()
                 .paymentAddress(processPaymentDTO.getPaymentInformation().getPaymentAddress())
                 .orderId(processPaymentDTO.getOrderId())
                 .build();
         if(processPaymentDTO.getPaymentInformation().getAmount()>2000)
             throw new PaymentException("Payment amount cannot be more than 2000");
-        if(processPaymentDTO.getPaymentInformation().getAmount()>1000){
+        else if(processPaymentDTO.getPaymentInformation().getAmount()>1000){
             PaymentEventDTO failedPaymentEventDTO = PaymentEventDTO.builder()
                     .orderId(processPaymentDTO.getOrderId())
                     .paymentAddress(processPaymentDTO.getPaymentInformation().getPaymentAddress())
                     .build();
             paymentProducerService.sendFailPaymentEvent(failedPaymentEventDTO);
+        } else {
+            paymentProducerService.sendSucessPaymentEvent(successfulPaymentEventDTO);
         }
-        paymentProducerService.sendSucessPaymentEvent(successfulPaymentEventDTO);
     }
 
     private ProcessPaymentDTO getProcessPaymentDTO(String message) throws JsonProcessingException {

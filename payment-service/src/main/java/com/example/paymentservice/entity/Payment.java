@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class Payment extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
-    private PaymentState state;
+    private PaymentState state = PaymentState.INITIAL;
 
     private String paymentAddress;
 

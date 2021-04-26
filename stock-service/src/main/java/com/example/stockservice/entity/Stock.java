@@ -23,6 +23,6 @@ public class Stock extends BaseEntity {
     private long price;
 
     @Enumerated(EnumType.STRING)
-    private StockState state;
+    private StockState state = StockState.INUSE;
 
 }

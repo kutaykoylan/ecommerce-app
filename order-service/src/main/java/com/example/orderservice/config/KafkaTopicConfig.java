@@ -23,4 +23,14 @@ public class KafkaTopicConfig {
         return TopicBuilder.name("release-stock").build();
     }
 
+    @Bean
+    public NewTopic paymentSuccess() {
+        return TopicBuilder.name("success-payment").build();
+    }
+
+    @Bean
+    public NewTopic paymentFail() { return TopicBuilder.name("fail-payment").build(); }
+
+
+
 }

@@ -18,6 +18,7 @@ public class OrderConsumerService {
 
     @KafkaListener(topics = "success-payment", groupId = "order-service")
     public void successPayment(String message) throws JsonProcessingException, OrderException {
+        // TODO review this for error messages
         PaymentEventDTO paymentSuccessEvent = getProcessPaymentDTO(message);
         Order order = orderService.findOrderById(paymentSuccessEvent.getOrderId());
         if (order.getState() == OrderState.PAYMENT_READY) {
