@@ -7,9 +7,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class ReturnPaymentEventDTO {
-     Long orderId;
+    Long orderId;
 
     float amount;
-
-    EventType eventType = EventType.OP_SINGLE;
 }

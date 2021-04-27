@@ -48,7 +48,6 @@ public class OrderServiceImpl implements OrderService{
         }
         String stockId = order.getStockId();
         ReleaseStockDTO releaseStockDTO = new ReleaseStockDTO(stockId, order.getOrderAmount());
-        // TODO: check if this works
         setOrderState(order.getId(), OrderState.CANCELLED);
         orderProducer.sendReleaseStockEvent(releaseStockDTO);
     }

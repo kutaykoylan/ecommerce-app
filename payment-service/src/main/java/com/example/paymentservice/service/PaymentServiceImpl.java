@@ -45,13 +45,21 @@ public class PaymentServiceImpl implements PaymentService{
              throw new PaymentException("There is no payment available with that id");
     }
 
+    @Override
+    public Payment createPayment(Payment payment) { return paymentRepository.save(payment); }
+
     private void returnPaymentWhenIsPresent(Payment paymentVt) throws PaymentException {
         if(paymentVt.getState() != PaymentState.PAID)
             throw new PaymentException("Payment state is not valid for this Operation: " + paymentVt.toString());
+        paymentVt.setState(PaymentState.RETURN);
+        paymentRepository.save(paymentVt);
         ReturnPaymentEventDTO returnedPaymentEventDTO = ReturnPaymentEventDTO.builder()
                 .orderId(paymentVt.getOrderId())
                 .amount(paymentVt.getAmount())
                 .build();
         paymentProducerService.sendReturnPaymentEvent(returnedPaymentEventDTO);
     }
+
+    @Override
+    public Payment savePayment(Payment payment) { return paymentRepository.save(payment); }
 }

@@ -13,4 +13,8 @@ public interface PaymentService {
     Page<Payment> findAll(int page, int size);
 
     Payment returnPayment(Payment payment) throws PaymentException;
+
+    Payment createPayment(Payment payment);
+
+    Payment savePayment(Payment payment);
 }
