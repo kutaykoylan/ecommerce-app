@@ -4,10 +4,12 @@ import com.example.orderservice.common.exception.OrderException;
 import com.example.orderservice.entity.Order;
 import com.example.orderservice.entity.OrderState;
 import com.example.orderservice.kafka.dto.PaymentEventDTO;
+import com.example.orderservice.kafka.dto.ReturnPaymentEventDTO;
 import com.example.orderservice.service.OrderService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import net.bytebuddy.asm.Advice;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
@@ -39,9 +41,26 @@ public class OrderConsumerService {
             throw new OrderException("Order state is not valid for this Operation");
     }
 
+    @KafkaListener(topics = "return-payment", groupId = "order-service")
+    public void returnPayment(String message) throws JsonProcessingException, OrderException {
+        ReturnPaymentEventDTO returnPaymentEventDTO = getReturnPaymentDTO(message);
+        Order order = orderService.findOrderById(returnPaymentEventDTO.getOrderId());
+        if (order.getState() != OrderState.PAID) {
+            throw new OrderException("Order state is not valid for this Operation");
+        } else {
+            System.out.println("Order is returned");
+            orderService.setOrderState(order.getId(), OrderState.RETURNED);
+        }
+    }
+
     private PaymentEventDTO getProcessPaymentDTO(String message) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(message, PaymentEventDTO.class);
+    }
+
+    private ReturnPaymentEventDTO getReturnPaymentDTO(String message) throws  JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(message, ReturnPaymentEventDTO.class);
     }
 
 }
