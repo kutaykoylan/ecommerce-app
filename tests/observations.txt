@@ -1,0 +1,3 @@
+-entity ids that comes with eventsourcing are changed with actual entities.
+-there is no need for delay in requests' tests anymore.
+-there is an implicit check mechanism in event sourcing for the createOrder endpoint
