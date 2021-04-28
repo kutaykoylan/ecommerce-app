@@ -11,10 +11,10 @@ import javax.validation.Valid;
 
 public interface PaymentController {
     @GetMapping(value = "/payments/{paymentId}")
-    PaymentResponseDTO findPaymentById(@PathVariable("paymentId") Long paymentId);
+    PaymentResponseDTO findPaymentById(@PathVariable("paymentId") Long paymentId) throws PaymentException;
 
     @GetMapping(value = "/payments/{paymentId}/{version}")
-    PaymentResponseDTO findPaymentByIdAndVersion(@PathVariable("paymentId") Long paymentId, @PathVariable("version") Long version) ;
+    PaymentResponseDTO findPaymentByIdAndVersion(@PathVariable("paymentId") Long paymentId, @PathVariable("version") Long version) throws PaymentException;
 
     @GetMapping(value = "/payments")
     Page<PaymentResponseDTO> findOrders(@RequestParam(value = "page", required = false, defaultValue = "0") int page, @RequestParam(value = "size", required = false, defaultValue = "10") int size);

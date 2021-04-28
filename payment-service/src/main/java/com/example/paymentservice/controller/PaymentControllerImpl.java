@@ -28,12 +28,12 @@ public class PaymentControllerImpl implements PaymentController {
     private final PaymentMapper paymentMapper;
 
     @Override
-    public PaymentResponseDTO findPaymentById(Long paymentId) {
+    public PaymentResponseDTO findPaymentById(Long paymentId) throws PaymentException {
         return paymentMapper.mapToPaymentResponseDTO(paymentService.findPaymentById(paymentId));
     }
 
     @Override
-    public PaymentResponseDTO findPaymentByIdAndVersion(Long paymentId, Long version) {
+    public PaymentResponseDTO findPaymentByIdAndVersion(Long paymentId, Long version) throws PaymentException {
         return paymentMapper.mapToPaymentResponseDTO(paymentService.findPaymentByIdAndVersion(paymentId,version));
     }
 

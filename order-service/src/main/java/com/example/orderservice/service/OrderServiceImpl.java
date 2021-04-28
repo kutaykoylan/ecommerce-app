@@ -9,25 +9,38 @@ import com.example.orderservice.kafka.dto.ReleaseStockDTO;
 import com.example.orderservice.kafka.dto.ReserveStockDTO;
 import com.example.orderservice.kafka.producer.OrderProducer;
 import com.example.orderservice.repository.OrderRepository;
+import com.example.orderservice.service.helper.OrderServiceHelper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import javax.validation.constraints.NotNull;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
     private final OrderRepository orderRepository;
     private final OrderProducer orderProducer;
+    private final OrderServiceHelper orderServiceHelper;
 
     @Override
-    public Order findOrderById(Long orderId) {
-        return orderRepository.findById(orderId).orElse(null);
+    public Order findOrderById(Long orderId) throws OrderException {
+        Optional<Order> orderVt =orderRepository.findById(orderId);
+        if (orderVt.isPresent()){
+            return orderVt.get();
+        }else
+            throw new OrderException("There is no order available with that id");
     }
 
     @Override
-    public Order findOrderByIdAndVersion(Long orderId, Long version) {
-        return orderRepository.findByIdAndVersion(orderId, version).orElse(null);
+    public Order findOrderByIdAndVersion(Long orderId, Long version) throws OrderException {
+        Optional<Order> orderVt =orderRepository.findByIdAndVersion(orderId, version);
+        if (orderVt.isPresent()){
+            return orderVt.get();
+        }else
+            throw new OrderException("There is no order available with that id and history");
     }
 
     @Override
@@ -43,7 +56,7 @@ public class OrderServiceImpl implements OrderService{
     @Override
     public void cancelOrder(Long orderId) throws OrderException {
         Order order = orderRepository.findById(orderId).orElse(null);
-        if (order.getState() != OrderState.PAID) {
+        if (orderServiceHelper.isOrderStatePaid(order)) {
             throw new OrderException("Order state is not valid for this operation");
         }
         String stockId = order.getStockId();
@@ -52,19 +65,36 @@ public class OrderServiceImpl implements OrderService{
         orderProducer.sendReleaseStockEvent(releaseStockDTO);
     }
 
+
+
     @Override
     public void processOrder(Long orderId, PaymentInformation paymentInformation) throws OrderException {
         Order order = orderRepository.findById(orderId).orElse(null);
-        if (order.getState() != OrderState.INITIAL) {
+        if (orderServiceHelper.isOrderStateInitial(order)) {
             throw new OrderException("Order state is not valid for this operation");
         }
         String stockId = order.getStockId();
         ReserveStockDTO reserveStockDTO = new ReserveStockDTO(stockId, order.getOrderAmount());
         ProcessPaymentDTO processPaymentDTO = new ProcessPaymentDTO(orderId,paymentInformation);
+        updateOrder(paymentInformation, order);
+        publishProcessOrderMessages(reserveStockDTO, processPaymentDTO);
+    }
+
+    private void updateOrder(PaymentInformation paymentInformation, Order order) {
         order.setState(OrderState.PAYMENT_READY);
+        setPaymentInformationOfOrder(paymentInformation, order);
         orderRepository.save(order);
+    }
+
+    private void publishProcessOrderMessages(ReserveStockDTO reserveStockDTO, ProcessPaymentDTO processPaymentDTO) {
         orderProducer.sendReserveStockEvent(reserveStockDTO);
         orderProducer.sendProcessPaymentEvent(processPaymentDTO);
+    }
+
+    private void setPaymentInformationOfOrder(PaymentInformation paymentInformation, Order order) {
+        order.setAmount(paymentInformation.getAmount());
+        order.setPaymentAddress(paymentInformation.getPaymentAddress());
+        order.setCardInformation(paymentInformation.getCardInformation());
     }
 
     @Override

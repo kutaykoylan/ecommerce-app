@@ -8,9 +8,9 @@ import org.springframework.data.domain.Page;
 
 public interface OrderService {
 
-    Order findOrderById(Long orderId);
+    Order findOrderById(Long orderId) throws OrderException;
 
-    Order findOrderByIdAndVersion(Long orderId,Long version);
+    Order findOrderByIdAndVersion(Long orderId,Long version) throws OrderException;
 
     Order createOrder(Order order);
 

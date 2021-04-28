@@ -21,8 +21,12 @@ public class PaymentServiceImpl implements PaymentService{
     private final PaymentProducerService paymentProducerService;
 
     @Override
-    public Payment findPaymentById(Long id) {
-        return paymentRepository.findById(id).orElse(null);
+    public Payment findPaymentById(Long id) throws PaymentException {
+        Optional<Payment> paymentVt = paymentRepository.findById(id);
+        if (paymentVt.isPresent()){
+            return paymentVt.get();
+        }else
+            throw new PaymentException("There is no payment available with that id");
     }
 
     @Override
@@ -31,8 +35,12 @@ public class PaymentServiceImpl implements PaymentService{
     }
 
     @Override
-    public Payment findPaymentByIdAndVersion(Long paymentId, Long version) {
-        return paymentRepository.findByIdAndVersion(paymentId,version).orElse(null);
+    public Payment findPaymentByIdAndVersion(Long paymentId, Long version) throws PaymentException {
+        Optional<Payment> paymentVt = paymentRepository.findByIdAndVersion(paymentId,version);
+        if (paymentVt.isPresent()){
+            return paymentVt.get();
+        }else
+            throw new PaymentException("There is no payment available with that id and history");
     }
 
     @Override

@@ -8,7 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 public class FindOrderResponseDTO {
 
-    private Long orderId;
+    private Long id;
 
     private OrderState state;
 

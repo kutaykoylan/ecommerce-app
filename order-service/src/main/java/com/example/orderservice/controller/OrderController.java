@@ -16,10 +16,10 @@ import javax.validation.Valid;
 public interface OrderController {
 
     @GetMapping(value = "/orders/{orderId}")
-    FindOrderResponseDTO findOrderById(@PathVariable("orderId") Long orderId);
+    FindOrderResponseDTO findOrderById(@PathVariable("orderId") Long orderId) throws OrderException;
 
     @GetMapping(value = "/orders/{orderId}/{version}")
-    FindOrderResponseDTO findOrderByIdAndVersion(@PathVariable("orderId") Long orderId, @PathVariable("version") Long version) ;
+    FindOrderResponseDTO findOrderByIdAndVersion(@PathVariable("orderId") Long orderId, @PathVariable("version") Long version) throws OrderException;
 
     @GetMapping(value = "/orders")
     Page<FindOrderResponseDTO> findOrders(@RequestParam(value = "page", required = false, defaultValue = "0") int page, @RequestParam(value = "size", required = false, defaultValue = "10") int size);

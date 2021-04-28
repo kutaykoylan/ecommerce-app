@@ -6,9 +6,9 @@ import org.springframework.data.domain.Page;
 
 
 public interface PaymentService {
-    Payment findPaymentById(Long id);
+    Payment findPaymentById(Long id) throws PaymentException;
 
-    Payment findPaymentByIdAndVersion(Long paymentId,Long version);
+    Payment findPaymentByIdAndVersion(Long paymentId,Long version) throws PaymentException;
 
     Page<Payment> findAll(int page, int size);
 
