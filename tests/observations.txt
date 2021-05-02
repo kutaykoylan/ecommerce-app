@@ -1,3 +1,7 @@
 -entity ids that comes with eventsourcing are changed with actual entities.
 -there is no need for delay in requests' tests anymore.
 -there is an implicit check mechanism in event sourcing for the createOrder endpoint
+-version,history that comes with event sourcing is not used anymore because those variables ensures the eventual
+consistency of event sourcing.
+-although some delay exists for the requests contains kafka , it is so small compare to delay in ES that can be
+neglected.

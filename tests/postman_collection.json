@@ -307,39 +307,6 @@
 					"name": "createOrder (correct body)",
 					"event": [
 						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"const url = `${pm.environment.get('baseUrl')}/stocks` //createStock",
-									"",
-									"const reqBody = {",
-									"    \"stockName\": \"utoy\",",
-									"    \"remainingStock\": \"100\",",
-									"    \"price\":110.0",
-									"}",
-									"",
-									"pm.sendRequest({",
-									"    url,",
-									"    method: 'POST',",
-									"    header: {",
-									"        'Content-Type': 'application/json'",
-									"    },",
-									"    body: {",
-									"        mode: 'raw',",
-									"        raw: JSON.stringify(reqBody)",
-									"    }",
-									"}, (err, response) => {",
-									"",
-									"    const responseJson = response.json(); // stock control response body",
-									"    console.log(\"stockId\"+responseJson.id)",
-									"    pm.globals.set('stockId',responseJson.id)",
-									"",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
 							"listen": "test",
 							"script": {
 								"exec": [
@@ -397,7 +364,7 @@
 									"console.log(createOrderRequest)",
 									"console.log(createOrderResponse)",
 									"",
-									"pm.test(\"createOrder_CorrectBody_ResponseOrderEqualToRequestedForNonCQRS\", () => {   ",
+									"pm.test(\"createOrder_CorrectBody_ResponseOrderEqualToExpectedForNonCQRS\", () => {   ",
 									"    pm.expect(createOrderRequest.stockId.toString()).to.eql(createOrderResponse.stockId.toString());",
 									"    pm.expect(createOrderRequest.orderAmount.toString()).to.eql(createOrderResponse.orderAmount.toString());",
 									"    pm.expect(createOrderResponse.description.toString()).to.eql(createOrderResponse.description.toString());    ",
@@ -463,6 +430,39 @@
 									"    });",
 									"},1500)",
 									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const url = `${pm.environment.get('baseUrl')}/stocks` //createStock",
+									"",
+									"const reqBody = {",
+									"    \"stockName\": \"utoy\",",
+									"    \"remainingStock\": \"100\",",
+									"    \"price\":110.0",
+									"}",
+									"",
+									"pm.sendRequest({",
+									"    url,",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(reqBody)",
+									"    }",
+									"}, (err, response) => {",
+									"",
+									"    const responseJson = response.json(); // stock control response body",
+									"    console.log(\"stockId\"+responseJson.id)",
+									"    pm.globals.set('stockId',responseJson.id)",
+									"",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -1700,186 +1700,6 @@
 							"body": ""
 						}
 					]
-				},
-				{
-					"name": "findOrderByIdAndVersion",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/orders/:orderId/:version",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"orders",
-								":orderId",
-								":version"
-							],
-							"variable": [
-								{
-									"key": "orderId",
-									"value": "<string>",
-									"description": "(Required) orderId"
-								},
-								{
-									"key": "version",
-									"value": "<integer>",
-									"description": "(Required) version"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Forbidden",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/orders/:orderId/:version",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"orders",
-										":orderId",
-										":version"
-									],
-									"variable": [
-										{
-											"key": "orderId"
-										},
-										{
-											"key": "version"
-										}
-									]
-								}
-							},
-							"status": "Forbidden",
-							"code": 403,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Not Found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/orders/:orderId/:version",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"orders",
-										":orderId",
-										":version"
-									],
-									"variable": [
-										{
-											"key": "orderId"
-										},
-										{
-											"key": "version"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "OK",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/orders/:orderId/:version",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"orders",
-										":orderId",
-										":version"
-									],
-									"variable": [
-										{
-											"key": "orderId"
-										},
-										{
-											"key": "version"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "*/*"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Unauthorized",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/orders/:orderId/:version",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"orders",
-										":orderId",
-										":version"
-									],
-									"variable": [
-										{
-											"key": "orderId"
-										},
-										{
-											"key": "version"
-										}
-									]
-								}
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
 				}
 			]
 		},
@@ -1887,7 +1707,7 @@
 			"name": "payments",
 			"item": [
 				{
-					"name": "findPayments",
+					"name": "findPayments & findPaymentById",
 					"event": [
 						{
 							"listen": "test",
@@ -1940,649 +1760,119 @@
 									"        }",
 									"    }, (err, response) => {",
 									"",
-									"        const responseJson = response.json(); // fidn stock by id response body",
+									"        const responseJson = response.json(); // find stock by id response body",
 									"",
 									"        pm.test(\"findPaymentById_WrongParams_StatusToEqual500\", () => {   ",
 									"            pm.expect(response.code).to.eql(500);",
+									"        });",
+									"",
+									"    });",
+									"",
+									"/** ",
+									"*Non-CQRS requests starts here",
+									"*/",
+									"    pm.sendRequest({",
+									"        url,",
+									"        method: 'GET',",
+									"        header: {",
+									"            'Content-Type': 'application/json'",
+									"        }",
+									"    }, (err, response) => {",
+									"",
+									"        const responseJson = response.json(); // find stock by id response body",
+									"",
+									"        pm.test(\"findPaymentById_WrongParams_StatusToEqual400ForNonCQRS\", () => {   ",
+									"            pm.expect(response.code).to.eql(400);",
 									"        });",
 									"",
 									"    });"
 								],
 								"type": "text/javascript"
 							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"payments"
-							],
-							"query": [
-								{
-									"key": "offset",
-									"value": "<long>"
-								},
-								{
-									"key": "pageNumber",
-									"value": "<integer>"
-								},
-								{
-									"key": "pageSize",
-									"value": "<integer>"
-								},
-								{
-									"key": "paged",
-									"value": "<boolean>"
-								},
-								{
-									"key": "sort.sorted",
-									"value": "<boolean>"
-								},
-								{
-									"key": "sort.unsorted",
-									"value": "<boolean>"
-								},
-								{
-									"key": "unpaged",
-									"value": "<boolean>"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Not Found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments"
-									],
-									"query": [
-										{
-											"key": "offset",
-											"value": "<long>"
-										},
-										{
-											"key": "pageNumber",
-											"value": "<integer>"
-										},
-										{
-											"key": "pageSize",
-											"value": "<integer>"
-										},
-										{
-											"key": "paged",
-											"value": "<boolean>"
-										},
-										{
-											"key": "sort.sorted",
-											"value": "<boolean>"
-										},
-										{
-											"key": "sort.unsorted",
-											"value": "<boolean>"
-										},
-										{
-											"key": "unpaged",
-											"value": "<boolean>"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
 						},
 						{
-							"name": "Unauthorized",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments"
-									],
-									"query": [
-										{
-											"key": "offset",
-											"value": "<long>"
-										},
-										{
-											"key": "pageNumber",
-											"value": "<integer>"
-										},
-										{
-											"key": "pageSize",
-											"value": "<integer>"
-										},
-										{
-											"key": "paged",
-											"value": "<boolean>"
-										},
-										{
-											"key": "sort.sorted",
-											"value": "<boolean>"
-										},
-										{
-											"key": "sort.unsorted",
-											"value": "<boolean>"
-										},
-										{
-											"key": "unpaged",
-											"value": "<boolean>"
-										}
-									]
-								}
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Forbidden",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments"
-									],
-									"query": [
-										{
-											"key": "offset",
-											"value": "<long>"
-										},
-										{
-											"key": "pageNumber",
-											"value": "<integer>"
-										},
-										{
-											"key": "pageSize",
-											"value": "<integer>"
-										},
-										{
-											"key": "paged",
-											"value": "<boolean>"
-										},
-										{
-											"key": "sort.sorted",
-											"value": "<boolean>"
-										},
-										{
-											"key": "sort.unsorted",
-											"value": "<boolean>"
-										},
-										{
-											"key": "unpaged",
-											"value": "<boolean>"
-										}
-									]
-								}
-							},
-							"status": "Forbidden",
-							"code": 403,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "OK",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments"
-									],
-									"query": [
-										{
-											"key": "offset",
-											"value": "<long>"
-										},
-										{
-											"key": "pageNumber",
-											"value": "<integer>"
-										},
-										{
-											"key": "pageSize",
-											"value": "<integer>"
-										},
-										{
-											"key": "paged",
-											"value": "<boolean>"
-										},
-										{
-											"key": "sort.sorted",
-											"value": "<boolean>"
-										},
-										{
-											"key": "sort.unsorted",
-											"value": "<boolean>"
-										},
-										{
-											"key": "unpaged",
-											"value": "<boolean>"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "*/*"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
-				},
-				{
-					"name": "findPayments (to test payment histories)",
-					"event": [
-						{
-							"listen": "test",
+							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"const responseJson = pm.response.json();",
-									"",
-									"",
-									"if(responseJson.content.length > 0){",
-									"    const selectedPayment = responseJson.content[0];",
-									"    let url = `${pm.environment.get('baseUrl')}/payments/${selectedPayment.id}/history` // findPaymentById",
-									"    pm.sendRequest({",
-									"        url,",
-									"        method: 'GET',",
-									"        header: {",
-									"            'Content-Type': 'application/json'",
-									"        }",
-									"    }, (err, response) => {",
-									"",
-									"        const responseJson = response.json(); // fidn stock by id response body",
-									"        ",
-									"        pm.test(\"findPaymentHistoriesByPaymentId_CorrectParams_ResponseToBeNotEmptyArray\", () => {   ",
-									"            pm.expect(responseJson).to.be.a('array');",
-									"            pm.expect(responseJson.length).to.be.above(0);",
-									"        });",
-									"    });",
-									"}",
-									"",
-									"    let url = `${pm.environment.get('baseUrl')}/payments/wrong-${Math.floor(Math.random()*100)}/history` // findPaymentById",
-									"    pm.sendRequest({",
-									"        url,",
-									"        method: 'GET',",
-									"        header: {",
-									"            'Content-Type': 'application/json'",
-									"        }",
-									"    }, (err, response) => {",
-									"",
-									"        const responseJson = response.json(); // fidn stock by id response body",
-									"        console.log(responseJson)",
-									"        pm.test(\"findPaymentHistoriesByPaymentId_CorrectParams_ResponseToBeNotEmptyArray\", () => {   ",
-									"            pm.expect(responseJson).to.be.a('array');",
-									"            pm.expect(responseJson.length).to.eql(0);",
-									"        });",
-									"    });",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"payments"
-							],
-							"query": [
-								{
-									"key": "offset",
-									"value": "<long>"
-								},
-								{
-									"key": "pageNumber",
-									"value": "<integer>"
-								},
-								{
-									"key": "pageSize",
-									"value": "<integer>"
-								},
-								{
-									"key": "paged",
-									"value": "<boolean>"
-								},
-								{
-									"key": "sort.sorted",
-									"value": "<boolean>"
-								},
-								{
-									"key": "sort.unsorted",
-									"value": "<boolean>"
-								},
-								{
-									"key": "unpaged",
-									"value": "<boolean>"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "OK",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments"
-									],
-									"query": [
-										{
-											"key": "offset",
-											"value": "<long>"
-										},
-										{
-											"key": "pageNumber",
-											"value": "<integer>"
-										},
-										{
-											"key": "pageSize",
-											"value": "<integer>"
-										},
-										{
-											"key": "paged",
-											"value": "<boolean>"
-										},
-										{
-											"key": "sort.sorted",
-											"value": "<boolean>"
-										},
-										{
-											"key": "sort.unsorted",
-											"value": "<boolean>"
-										},
-										{
-											"key": "unpaged",
-											"value": "<boolean>"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "*/*"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Forbidden",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments"
-									],
-									"query": [
-										{
-											"key": "offset",
-											"value": "<long>"
-										},
-										{
-											"key": "pageNumber",
-											"value": "<integer>"
-										},
-										{
-											"key": "pageSize",
-											"value": "<integer>"
-										},
-										{
-											"key": "paged",
-											"value": "<boolean>"
-										},
-										{
-											"key": "sort.sorted",
-											"value": "<boolean>"
-										},
-										{
-											"key": "sort.unsorted",
-											"value": "<boolean>"
-										},
-										{
-											"key": "unpaged",
-											"value": "<boolean>"
-										}
-									]
-								}
-							},
-							"status": "Forbidden",
-							"code": 403,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Unauthorized",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments"
-									],
-									"query": [
-										{
-											"key": "offset",
-											"value": "<long>"
-										},
-										{
-											"key": "pageNumber",
-											"value": "<integer>"
-										},
-										{
-											"key": "pageSize",
-											"value": "<integer>"
-										},
-										{
-											"key": "paged",
-											"value": "<boolean>"
-										},
-										{
-											"key": "sort.sorted",
-											"value": "<boolean>"
-										},
-										{
-											"key": "sort.unsorted",
-											"value": "<boolean>"
-										},
-										{
-											"key": "unpaged",
-											"value": "<boolean>"
-										}
-									]
-								}
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Not Found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments"
-									],
-									"query": [
-										{
-											"key": "offset",
-											"value": "<long>"
-										},
-										{
-											"key": "pageNumber",
-											"value": "<integer>"
-										},
-										{
-											"key": "pageSize",
-											"value": "<integer>"
-										},
-										{
-											"key": "paged",
-											"value": "<boolean>"
-										},
-										{
-											"key": "sort.sorted",
-											"value": "<boolean>"
-										},
-										{
-											"key": "sort.unsorted",
-											"value": "<boolean>"
-										},
-										{
-											"key": "unpaged",
-											"value": "<boolean>"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
-				},
-				{
-					"name": "findPayments (to test findpaymentbyidandversion)",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"const responseJson = pm.response.json();",
-									"",
-									"if(responseJson.content.length > 0){",
-									"    const selectedPayment = responseJson.content[0];",
-									"    let url = `${pm.environment.get('baseUrl')}/payments/${selectedPayment.id}/${selectedPayment.eventKey.version}` // findPaymentByIdandVersion",
-									"    pm.sendRequest({",
-									"        url,",
-									"        method: 'GET',",
-									"        header: {",
-									"            'Content-Type': 'application/json'",
-									"        }",
-									"    }, (err, response) => {",
-									"        console.log(response)",
-									"        const responseJson = response.json();",
-									"        pm.test(\"findPaymentByPaymentIdAndVersion_CorrectParams_ResponseToBeObject\", () => {   ",
-									"            pm.expect(responseJson).to.be.a('object');",
-									"        });",
-									"",
-									"        pm.test(\"findPaymentByPaymentIdAndVersion_CorrectParams_ResponseVersionToBeCorrect\", () => {   ",
-									"            pm.expect(responseJson.eventKey.version).to.eql(selectedPayment.eventKey.version);",
-									"        });",
-									"",
-									"    });",
-									"}"
+									"\r",
+									"const urlStock = `${pm.environment.get('baseUrl')}/stocks` //createStock\r",
+									"const urlOrder = `${pm.environment.get('baseUrl')}/orders`\r",
+									"\r",
+									"const reqBodyStock = {\r",
+									"    \"stockName\": \"utoy\",\r",
+									"    \"remainingStock\": \"100\"\r",
+									"}\r",
+									"\r",
+									"pm.sendRequest({\r",
+									"    url: urlStock,\r",
+									"    method: 'POST',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    },\r",
+									"    body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: JSON.stringify(reqBodyStock)\r",
+									"    }\r",
+									"}, (err, response) => {\r",
+									"    console.log(\"stock =>\" + response.json())\r",
+									"    const responseJson = response.json(); // stock control response body\r",
+									"    const body = {\r",
+									"        \"stockId\": responseJson.id,\r",
+									"        \"orderAmount\": \"10\",\r",
+									"        \"description\": \"Test3\",\r",
+									"        \"price\": 110.0\r",
+									"    }\r",
+									"    pm.sendRequest({\r",
+									"        url: urlOrder,\r",
+									"        method: 'POST',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        },\r",
+									"        body: {\r",
+									"            mode: 'raw',\r",
+									"            raw: JSON.stringify(body)\r",
+									"        }\r",
+									"    }, (err, response) => {\r",
+									"        const responseJsonOrder = response.json(); // stock control response body\r",
+									"        const orderId = responseJsonOrder.id\r",
+									"        pm.globals.set('orderId', orderId)\r",
+									"        const urlProcessOrder = `${pm.environment.get('baseUrl')}/orders/${orderId}/process`\r",
+									"        const processOrderBody = {\r",
+									"            \"paymentInformation\": {\r",
+									"                \"amount\": \"25\",\r",
+									"                \"paymentAddress\": \"Test\",\r",
+									"                \"cardInformation\": \"1111222233334444\"\r",
+									"            }\r",
+									"        }\r",
+									"        pm.sendRequest({\r",
+									"            url: urlProcessOrder,\r",
+									"            method: 'POST',\r",
+									"            header: {\r",
+									"                'Content-Type': 'application/json'\r",
+									"            },\r",
+									"            body: {\r",
+									"                mode: 'raw',\r",
+									"                raw: JSON.stringify(processOrderBody)\r",
+									"            }\r",
+									"        }, (err, response) => {\r",
+									"            if (err) {\r",
+									"                console.log(err)\r",
+									"            } else {\r",
+									"                console.log(response.json())\r",
+									"            }\r",
+									"        })\r",
+									"        let url = `${pm.environment.get('baseUrl')}/orders/${orderId}` // cancel order by id (it works for only paid orders)\r",
+									"        setTimeout(() => {\r",
+									"            pm.sendRequest({\r",
+									"                url,\r",
+									"                method: 'DELETE'\r",
+									"            }, (err, response) => { \r",
+									"                console.log(err)\r",
+									"                console.log(response)\r",
+									"            });\r",
+									"        }, 100)\r",
+									"    });\r",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -2690,6 +1980,63 @@
 							"body": ""
 						},
 						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<long>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										},
+										{
+											"key": "pageSize",
+											"value": "<integer>"
+										},
+										{
+											"key": "paged",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.sorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.unsorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "unpaged",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
 							"name": "Forbidden",
 							"originalRequest": {
 								"method": "GET",
@@ -2798,384 +2145,6 @@
 								{
 									"key": "Content-Type",
 									"value": "*/*"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Unauthorized",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments"
-									],
-									"query": [
-										{
-											"key": "offset",
-											"value": "<long>"
-										},
-										{
-											"key": "pageNumber",
-											"value": "<integer>"
-										},
-										{
-											"key": "pageSize",
-											"value": "<integer>"
-										},
-										{
-											"key": "paged",
-											"value": "<boolean>"
-										},
-										{
-											"key": "sort.sorted",
-											"value": "<boolean>"
-										},
-										{
-											"key": "sort.unsorted",
-											"value": "<boolean>"
-										},
-										{
-											"key": "unpaged",
-											"value": "<boolean>"
-										}
-									]
-								}
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
-				},
-				{
-					"name": "findPaymentById",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/payments/:paymentId",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"payments",
-								":paymentId"
-							],
-							"variable": [
-								{
-									"key": "paymentId",
-									"value": "<string>",
-									"description": "(Required) paymentId"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Unauthorized",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments/:paymentId",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments",
-										":paymentId"
-									],
-									"variable": [
-										{
-											"key": "paymentId"
-										}
-									]
-								}
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Not Found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments/:paymentId",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments",
-										":paymentId"
-									],
-									"variable": [
-										{
-											"key": "paymentId"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "OK",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments/:paymentId",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments",
-										":paymentId"
-									],
-									"variable": [
-										{
-											"key": "paymentId"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "*/*"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Forbidden",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments/:paymentId",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments",
-										":paymentId"
-									],
-									"variable": [
-										{
-											"key": "paymentId"
-										}
-									]
-								}
-							},
-							"status": "Forbidden",
-							"code": 403,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
-				},
-				{
-					"name": "findPaymentHistoriesByPaymentId",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/payments/:paymentId/history",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"payments",
-								":paymentId",
-								"history"
-							],
-							"variable": [
-								{
-									"key": "paymentId",
-									"value": "<string>",
-									"description": "(Required) paymentId"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Not Found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments/:paymentId/history",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments",
-										":paymentId",
-										"history"
-									],
-									"variable": [
-										{
-											"key": "paymentId"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "OK",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments/:paymentId/history",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments",
-										":paymentId",
-										"history"
-									],
-									"variable": [
-										{
-											"key": "paymentId"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "*/*"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Unauthorized",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments/:paymentId/history",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments",
-										":paymentId",
-										"history"
-									],
-									"variable": [
-										{
-											"key": "paymentId"
-										}
-									]
-								}
-							},
-							"status": "Unauthorized",
-							"code": 401,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Forbidden",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments/:paymentId/history",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments",
-										":paymentId",
-										"history"
-									],
-									"variable": [
-										{
-											"key": "paymentId"
-										}
-									]
-								}
-							},
-							"status": "Forbidden",
-							"code": 403,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
 								}
 							],
 							"cookie": [],
@@ -3185,6 +2154,170 @@
 				},
 				{
 					"name": "returnPayment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"const urlStock = `${pm.environment.get('baseUrl')}/stocks` //createStock\r",
+									"const urlOrder = `${pm.environment.get('baseUrl')}/orders`\r",
+									"\r",
+									"const reqBodyStock = {\r",
+									"    \"stockName\": \"utoy\",\r",
+									"    \"remainingStock\": \"100\"\r",
+									"}\r",
+									"\r",
+									"pm.sendRequest({\r",
+									"    url: urlStock,\r",
+									"    method: 'POST',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    },\r",
+									"    body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: JSON.stringify(reqBodyStock)\r",
+									"    }\r",
+									"}, (err, response) => {\r",
+									"    console.log(\"stock =>\" + response.json())\r",
+									"    const responseJson = response.json(); // stock control response body\r",
+									"    const body = {\r",
+									"        \"stockId\": responseJson.id,\r",
+									"        \"orderAmount\": \"10\",\r",
+									"        \"description\": \"Test3\",\r",
+									"        \"price\": 110.0\r",
+									"    }\r",
+									"    pm.sendRequest({\r",
+									"        url: urlOrder,\r",
+									"        method: 'POST',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        },\r",
+									"        body: {\r",
+									"            mode: 'raw',\r",
+									"            raw: JSON.stringify(body)\r",
+									"        }\r",
+									"    }, (err, response) => {\r",
+									"        const responseJsonOrder = response.json(); // stock control response body\r",
+									"        const orderId = responseJsonOrder.id\r",
+									"        pm.globals.set('orderId', orderId)\r",
+									"        const urlProcessOrder = `${pm.environment.get('baseUrl')}/orders/${orderId}/process`\r",
+									"        const processOrderBody = {\r",
+									"            \"paymentInformation\": {\r",
+									"                \"amount\": \"25\",\r",
+									"                \"paymentAddress\": \"Test\",\r",
+									"                \"cardInformation\": \"1111222233334444\"\r",
+									"            }\r",
+									"        }\r",
+									"        pm.sendRequest({\r",
+									"            url: urlProcessOrder,\r",
+									"            method: 'POST',\r",
+									"            header: {\r",
+									"                'Content-Type': 'application/json'\r",
+									"            },\r",
+									"            body: {\r",
+									"                mode: 'raw',\r",
+									"                raw: JSON.stringify(processOrderBody)\r",
+									"            }\r",
+									"        }, (err, response) => {\r",
+									"            if (err) {\r",
+									"                console.log(err)\r",
+									"            } else {\r",
+									"                console.log(response.json())\r",
+									"            }\r",
+									"        })\r",
+									"        let url = `${pm.environment.get('baseUrl')}/orders/${orderId}` // cancel order by id (it works for only paid orders)\r",
+									"        setTimeout(() => {\r",
+									"            pm.sendRequest({\r",
+									"                url,\r",
+									"                method: 'DELETE'\r",
+									"            }, (err, response) => { \r",
+									"                console.log(err)\r",
+									"                console.log(response)\r",
+									"            });\r",
+									"        }, 100)\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"setTimeout(() => {\r",
+									"    let url = `${pm.environment.get('baseUrl')}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=` // findPayments\r",
+									"    pm.sendRequest({\r",
+									"        url,\r",
+									"        method: 'GET',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        }\r",
+									"    }, (err, response) => {\r",
+									"\r",
+									"        const responseJson = response.json(); // fidn stock by id response body\r",
+									"\r",
+									"        if (responseJson.content.length > 0) {\r",
+									"            var i = 0;\r",
+									"            var selectedPayment = responseJson.content[i];\r",
+									"            while (responseJson.content.length > i && selectedPayment.state !== 'PAID') {\r",
+									"                i++;\r",
+									"                var selectedPayment = responseJson.content[i];\r",
+									"            }\r",
+									"            let url = `${pm.environment.get('baseUrl')}/payments/${selectedPayment.id}` // findPaymentById\r",
+									"            pm.sendRequest({\r",
+									"                url,\r",
+									"                method: 'GET',\r",
+									"                header: {\r",
+									"                    'Content-Type': 'application/json'\r",
+									"                }\r",
+									"            }, (err, response) => {\r",
+									"\r",
+									"                const responseJson = response.json(); // fidn stock by id response body\r",
+									"                console.log(responseJson)\r",
+									"                pm.globals.set('orderId', responseJson.orderId)\r",
+									"                pm.globals.set('paymentId', responseJson.id)\r",
+									"            });\r",
+									"        }\r",
+									"    });\r",
+									"}, 1000)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"console.log(responseJson)\r",
+									"\r",
+									"pm.test(\"returnPayment_CorrectParams_StatusToEqual200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"returnPayment_CorrectBody_PaymentStateToEqualReturnForNonCQRS\", () => {\r",
+									"    pm.expect(responseJson.state).to.eql(\"RETURN\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"returnPayment_CorrectBody_ResponseOrderHaveExpectedKeysForNonCQRS\", () => {\r",
+									"    pm.expect(responseJson).to.have.any.keys(('id'));\r",
+									"    pm.expect(responseJson).to.have.any.keys(('state'));\r",
+									"    pm.expect(responseJson).to.have.any.keys(('paymentAddress'));\r",
+									"    pm.expect(responseJson).to.have.any.keys(('orderId'));\r",
+									"    pm.expect(responseJson).to.have.any.keys(('amount'));\r",
+									"    pm.expect(responseJson).to.have.any.keys(('cardInformation'));\r",
+									"});\r",
+									"const url = `${pm.environment.get('baseUrl')}/orders/${pm.globals.get('orderId')}` // findOrderById\r",
+									"console.log(url)\r",
+									"pm.sendRequest(url, (err, response) => {\r",
+									"    const findOrderByIdResponse = response.json();\r",
+									"    console.log(findOrderByIdResponse)\r",
+									"    pm.test(\"returnPayment_CorrectBodyWith0msDelay_OrderStateToEqualReturnForNonCQRS\", () => {\r",
+									"        pm.expect(findOrderByIdResponse.state).to.eql(\"RETURNED\");\r",
+									"    });\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -3195,24 +2328,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"orderId\": \"<string>\",\n    \"paymentId\": \"<string>\"\n}"
+							"raw": "{\n    \"orderId\": \"{{orderId}}\",\n    \"paymentId\": \"{{paymentId}}\"\n}"
 						},
 						"url": {
-							"raw": "{{baseUrl}}/payments/:paymentId/return",
+							"raw": "{{baseUrl}}/payments/{{paymentId}}/return",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"payments",
-								":paymentId",
+								"{{paymentId}}",
 								"return"
-							],
-							"variable": [
-								{
-									"key": "paymentId",
-									"value": "<string>",
-									"description": "(Required) paymentId"
-								}
 							]
 						}
 					},
@@ -3397,186 +2523,6 @@
 							},
 							"status": "Not Found",
 							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						}
-					]
-				},
-				{
-					"name": "findPaymentByIdAndVersion",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/payments/:paymentId/:version",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"payments",
-								":paymentId",
-								":version"
-							],
-							"variable": [
-								{
-									"key": "paymentId",
-									"value": "<string>",
-									"description": "(Required) paymentId"
-								},
-								{
-									"key": "version",
-									"value": "<integer>",
-									"description": "(Required) version"
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Not Found",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments/:paymentId/:version",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments",
-										":paymentId",
-										":version"
-									],
-									"variable": [
-										{
-											"key": "paymentId"
-										},
-										{
-											"key": "version"
-										}
-									]
-								}
-							},
-							"status": "Not Found",
-							"code": 404,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Forbidden",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments/:paymentId/:version",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments",
-										":paymentId",
-										":version"
-									],
-									"variable": [
-										{
-											"key": "paymentId"
-										},
-										{
-											"key": "version"
-										}
-									]
-								}
-							},
-							"status": "Forbidden",
-							"code": 403,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "text/plain"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "OK",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments/:paymentId/:version",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments",
-										":paymentId",
-										":version"
-									],
-									"variable": [
-										{
-											"key": "paymentId"
-										},
-										{
-											"key": "version"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "text",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "*/*"
-								}
-							],
-							"cookie": [],
-							"body": ""
-						},
-						{
-							"name": "Unauthorized",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/payments/:paymentId/:version",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"payments",
-										":paymentId",
-										":version"
-									],
-									"variable": [
-										{
-											"key": "paymentId"
-										},
-										{
-											"key": "version"
-										}
-									]
-								}
-							},
-							"status": "Unauthorized",
-							"code": 401,
 							"_postman_previewlanguage": "text",
 							"header": [
 								{

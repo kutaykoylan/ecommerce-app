@@ -24,7 +24,7 @@ public class StockEventsConsumer {
     @KafkaListener(topics = "reserve-stock",
             groupId ="stock-service")
     public void reserveStock(String message) throws JsonProcessingException, StockException {
-        System.out.println(message);
+   //     System.out.println(message);
         ObjectMapper mapper = new ObjectMapper();
         ReserveStockDTO reserveStockDTO = mapper.readValue(message, ReserveStockDTO.class);
         stockService.decreaseStock(reserveStockDTO);
@@ -33,7 +33,7 @@ public class StockEventsConsumer {
     @KafkaListener(topics = "release-stock",
             groupId ="stock-service")
     public void releaseStock(String message) throws JsonProcessingException, StockException {
-        System.out.println(message);
+    //    System.out.println(message);
         ObjectMapper mapper = new ObjectMapper();
         ReserveStockDTO reserveStockDTO = mapper.readValue(message, ReserveStockDTO.class);
         AddStockRequestDTO addStockRequestDTO = new AddStockRequestDTO(reserveStockDTO.getOrderAmount(), Long.parseLong(reserveStockDTO.getStockId()));
