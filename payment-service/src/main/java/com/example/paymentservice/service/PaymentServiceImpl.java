@@ -45,7 +45,7 @@ public class PaymentServiceImpl implements PaymentService{
 
     @Override
     public Payment returnPayment(Payment payment) throws PaymentException {
-        Optional<Payment> paymentVt = paymentRepository.findById(payment.getOrderId());
+        Optional<Payment> paymentVt = paymentRepository.findById(payment.getId());
          if (paymentVt.isPresent()){
              returnPaymentWhenIsPresent(paymentVt.get());
              return paymentVt.get();

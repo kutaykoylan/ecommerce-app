@@ -45,11 +45,11 @@ public class OrderConsumerService {
     public void returnPayment(String message) throws JsonProcessingException, OrderException {
         ReturnPaymentEventDTO returnPaymentEventDTO = getReturnPaymentDTO(message);
         Order order = orderService.findOrderById(returnPaymentEventDTO.getOrderId());
-        if (order.getState() != OrderState.PAID) {
+        if (order.getState() != OrderState.CANCELLED) {
             throw new OrderException("Order state is not valid for this Operation");
         } else {
             System.out.println("Order is returned");
-            orderService.setOrderState(order.getId(), OrderState.RETURNED);
+            orderService.setOrderState(order.getId(),  OrderState.RETURNED);
         }
     }
 

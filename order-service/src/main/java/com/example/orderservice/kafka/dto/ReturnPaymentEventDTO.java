@@ -1,16 +1,13 @@
 package com.example.orderservice.kafka.dto;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Value;
+import lombok.*;
 
-@Value
-@Builder
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class ReturnPaymentEventDTO {
-    Long orderId;
+    private Long orderId;
 
-    float amount;
+    private float amount;
 }
 
