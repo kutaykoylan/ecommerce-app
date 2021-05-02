@@ -4,7 +4,7 @@ This project is created to test effects of CQRS design pattern for testing of mi
 
 ## :flashlight: The Project with CQRS design pattern
 
-- [eventapis-example-ecommerce](https://github.com/kutaykoylan/eventapis-example-ecommerce)
+- [e-commerce-app-with-CQRS-and-ES](https://github.com/kutaykoylan/eventapis-example-ecommerce)
 
 ## :star: Extra Dependencies
 
