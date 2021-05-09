@@ -1,0 +1,4660 @@
+{
+	"info": {
+		"_postman_id": "6d4d8207-4ab0-45c4-8ba0-9a7422d64e0c",
+		"name": "ecommerce-app Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "orders",
+			"item": [
+				{
+					"name": "findOrders",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();",
+									"",
+									"pm.test(\"findOrders_CorrectParams_StatusToEqual200\", () => {   ",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"findOrders_CorrectParams_ContentToBeArray\", () => {   ",
+									"    pm.expect(responseJson.content).to.be.a('array');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "<long>"
+								},
+								{
+									"key": "pageNumber",
+									"value": "<integer>"
+								},
+								{
+									"key": "pageSize",
+									"value": "<integer>"
+								},
+								{
+									"key": "paged",
+									"value": "<boolean>"
+								},
+								{
+									"key": "sort.sorted",
+									"value": "<boolean>"
+								},
+								{
+									"key": "sort.unsorted",
+									"value": "<boolean>"
+								},
+								{
+									"key": "unpaged",
+									"value": "<boolean>"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<long>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										},
+										{
+											"key": "pageSize",
+											"value": "<integer>"
+										},
+										{
+											"key": "paged",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.sorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.unsorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "unpaged",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<long>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										},
+										{
+											"key": "pageSize",
+											"value": "<integer>"
+										},
+										{
+											"key": "paged",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.sorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.unsorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "unpaged",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<long>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										},
+										{
+											"key": "pageSize",
+											"value": "<integer>"
+										},
+										{
+											"key": "paged",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.sorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.unsorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "unpaged",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<long>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										},
+										{
+											"key": "pageSize",
+											"value": "<integer>"
+										},
+										{
+											"key": "paged",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.sorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.unsorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "unpaged",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "createOrder (correct body)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const createOrderResponse = pm.response.json();",
+									"",
+									"",
+									"pm.test(\"createOrder_CorrectBody_StatusToEqual200\", () => {   ",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"createOrder_CorrectBody_EntityIdToBeStringAndVersionToEqual0\", () => {   ",
+									"    pm.expect(createOrderResponse.entityId).to.be.a('string');",
+									"    pm.expect(createOrderResponse.version).to.eql(0);    ",
+									"});",
+									"",
+									"",
+									"const createdOrderId = createOrderResponse.id;",
+									"",
+									"const url = `${pm.environment.get('baseUrl')}/orders/${createdOrderId}` // findOrderById",
+									"",
+									"  pm.sendRequest(url, (err, response) => {",
+									"        const findOrderByIdResponse = response.json();",
+									"        pm.test(\"findOrderById_CreatedEntityIdWith0ms_StatusNotEqualOK\", () => {   ",
+									"            pm.expect(response.status).to.not.eql('OK');",
+									"        });",
+									"        ",
+									"        pm.test(\"findOrderById_CreatedEntityIdWith0ms_ResponseNotHaveId\", () => {   ",
+									"            pm.expect(findOrderByIdResponse).to.not.have.any.keys(('id'));",
+									"        });",
+									"",
+									"    });",
+									"",
+									"setTimeout(() => {",
+									"    pm.sendRequest(url, (err, response) => {",
+									"        const findOrderByIdResponse = response.json();",
+									"",
+									"        pm.test(\"findOrderById_CreatedEntityIdWith1500msDelay_StatusToEqualOK\", () => {   ",
+									"            pm.expect(response.status).to.eql('OK');",
+									"        });",
+									"        ",
+									"        pm.test(\"findOrderById_CreatedEntityIdWith1500msDelay_EntityIdToEqualId\", () => {   ",
+									"            pm.expect(findOrderByIdResponse.id).to.eql(createdOrderId);",
+									"        });",
+									"",
+									"    });",
+									"},1500)",
+									"/** ",
+									"*Non-CQRS requests starts here",
+									"*/",
+									"const createOrderRequest = JSON.parse(pm.request.body.raw);",
+									"",
+									"pm.test(\"createOrder_CorrectBody_StatusToEqual200\", () => {   ",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"console.log(createOrderRequest)",
+									"console.log(createOrderResponse)",
+									"",
+									"pm.test(\"createOrder_CorrectBody_ResponseOrderEqualToExpectedForNonCQRS\", () => {   ",
+									"    pm.expect(createOrderRequest.stockId.toString()).to.eql(createOrderResponse.stockId.toString());",
+									"    pm.expect(createOrderRequest.orderAmount.toString()).to.eql(createOrderResponse.orderAmount.toString());",
+									"    pm.expect(createOrderResponse.description.toString()).to.eql(createOrderResponse.description.toString());    ",
+									"});",
+									"",
+									"pm.test(\"createOrder_CorrectBody_ResponseOrderHaveExpectedKeysForNonCQRS\", () => {   ",
+									"    pm.expect(createOrderResponse).to.have.any.keys(('id'));",
+									"    pm.expect(createOrderResponse).to.have.any.keys(('stockId'));",
+									"    pm.expect(createOrderResponse).to.have.any.keys(('orderAmount'));",
+									"    pm.expect(createOrderResponse).to.have.any.keys(('description'));",
+									"});",
+									"  pm.sendRequest(url, (err, response) => {",
+									"        const findOrderByIdResponse = response.json();",
+									"        pm.test(\"findOrderById_CreatedEntityIdWith0ms_StatusEqualToOKForNonCQRS\", () => {   ",
+									"            pm.expect(response.status).to.eql('OK');",
+									"        });",
+									"        pm.test(\"findOrderById_CreatedEntityIdWith0ms_ResponseOrderEqualToRequestedForNonCQRS\", () => {   ",
+									"            pm.expect(createdOrderId.toString()).to.eql(findOrderByIdResponse.id.toString());",
+									"        });",
+									"        pm.test(\"findOrderById_CreatedEntityIdWith0ms_ResponseOrderHaveExpectedKeysForNonCQRS\", () => {   ",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('id'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('price'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('stockId'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('reservedStockVersion'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('orderAmount'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('paymentAddress'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('amount'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('cardInformation'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('paymentId'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('address'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('description'));",
+									"",
+									"        });",
+									"",
+									"    });",
+									"",
+									"setTimeout(() => {",
+									"    pm.sendRequest(url, (err, response) => {",
+									"        const findOrderByIdResponse = response.json();",
+									"        pm.test(\"findOrderById_CreatedEntityIdWith1500ms_StatusEqualToOKForNonCQRS\", () => {   ",
+									"            pm.expect(response.status).to.eql('OK');",
+									"        });",
+									"        console.log(createdOrderId)",
+									"        console.log(findOrderByIdResponse.id)",
+									"        pm.test(\"findOrderById_CreatedEntityIdWith1500ms_ResponseOrderEqualToRequestedForNonCQRS\", () => {   ",
+									"            pm.expect(createdOrderId.toString()).to.eql(findOrderByIdResponse.id.toString());",
+									"        });",
+									"        pm.test(\"findOrderById_CreatedEntityIdWith1500ms_ResponseOrderHaveExpectedKeysForNonCQRS\", () => {   ",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('id'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('price'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('stockId'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('reservedStockVersion'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('orderAmount'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('paymentAddress'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('amount'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('cardInformation'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('paymentId'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('address'));",
+									"            pm.expect(findOrderByIdResponse).to.have.any.keys(('description'));",
+									"",
+									"        });",
+									"",
+									"    });",
+									"},1500)",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const url = `${pm.environment.get('baseUrl')}/stocks` //createStock",
+									"",
+									"const reqBody = {",
+									"    \"stockName\": \"utoy\",",
+									"    \"remainingStock\": \"100\",",
+									"    \"price\":110.0",
+									"}",
+									"",
+									"pm.sendRequest({",
+									"    url,",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(reqBody)",
+									"    }",
+									"}, (err, response) => {",
+									"",
+									"    const responseJson = response.json(); // stock control response body",
+									"    console.log(\"stockId\"+responseJson.id)",
+									"    pm.globals.set('stockId',responseJson.id)",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"stockId\": {{stockId}},\n    \"orderAmount\": \"10\",\n    \"description\": \"Test3\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "createOrder (wrong body)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const createOrderResponse = pm.response.json();",
+									"",
+									"",
+									"pm.test(\"createOrder_WrongBody_StatusToEqual400\", () => {   ",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"createOrder_WrongBody_MessageToBeString\", () => {   ",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.message).to.be.a('string');",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"stockId\": \"wrong-stock-Id-to-test\",\n    \"orderAmount\": \"10\",\n    \"description\": \"Test3\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "createOrder (correct body by considering event sourcing)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const url = `${pm.environment.get('baseUrl')}/stocks` //createStock",
+									"",
+									"const reqBody = {",
+									"    \"stockName\": \"utoy\",",
+									"    \"remainingStock\": \"100\"",
+									"}",
+									"",
+									"pm.sendRequest({",
+									"    url,",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(reqBody)",
+									"    }",
+									"}, (err, response) => {",
+									"",
+									"    const responseJson = response.json(); // stock control response body",
+									"    pm.globals.set('stockId',responseJson.entityId)",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const createOrderResponseJson = pm.response.json();",
+									"",
+									"const createdOrderId = createOrderResponseJson.entityId",
+									"",
+									"const url = `${pm.environment.get('baseUrl')}/orders/${createdOrderId}/history` //findOrderHistoriesByStockId",
+									"",
+									"pm.sendRequest(url, (err, response) => {",
+									"",
+									"    const content = response.json(); // stock control response body",
+									"",
+									"    pm.test(\"findOrderHistoriesByOrderId_CreatedOrderId_FirstEventSuccess\", () => {   ",
+									"        pm.expect(content[0].eventType).to.eql(\"OrderCreatedEvent\");",
+									"        pm.expect(content[0].eventKey.version).to.eql(0);",
+									"    });",
+									"",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"stockId\": \"{{stockId}}\",\n    \"orderAmount\": \"10\",\n    \"description\": \"Test3\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										"create"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "cancelOrder",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const urlStock = `${pm.environment.get('baseUrl')}/stocks` //createStock",
+									"const urlOrder = `${pm.environment.get('baseUrl')}/orders`",
+									"",
+									"const reqBodyStock = {",
+									"    \"stockName\": \"utoy\",",
+									"    \"remainingStock\": \"100\"",
+									"}",
+									"",
+									"pm.sendRequest({",
+									"    url: urlStock,",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(reqBodyStock)",
+									"    }",
+									"}, (err, response) => {",
+									"    console.log(\"stock =>\"+response.json())",
+									"    const responseJson = response.json(); // stock control response body",
+									"    const body = {",
+									"        \"stockId\": responseJson.id,",
+									"        \"orderAmount\": \"10\",",
+									"        \"description\": \"Test3\",",
+									"        \"price\":110.0",
+									"    }",
+									"    pm.sendRequest({",
+									"    url: urlOrder,",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"            raw: JSON.stringify(body)",
+									"        }",
+									"    }, (err, response) => {",
+									"        const responseJsonOrder = response.json(); // stock control response body",
+									"        const orderId = responseJsonOrder.id",
+									"        pm.globals.set('orderId',orderId)",
+									"        const urlProcessOrder = `${pm.environment.get('baseUrl')}/orders/${orderId}/process`",
+									"        const processOrderBody = {",
+									"            \"paymentInformation\": {",
+									"                \"amount\": \"25\",",
+									"                \"paymentAddress\": \"Test\",",
+									"                \"cardInformation\": \"1111222233334444\"",
+									"            }",
+									"        }",
+									"        pm.sendRequest({",
+									"        url: urlProcessOrder,",
+									"        method: 'POST',",
+									"        header: {",
+									"            'Content-Type': 'application/json'",
+									"        },",
+									"        body: {",
+									"            mode: 'raw',",
+									"            raw: JSON.stringify(processOrderBody)",
+									"            }",
+									"        }, (err, response) => {",
+									"            if (err) {",
+									"                console.log(err)",
+									"            } else {",
+									"                console.log(response.json())",
+									"            }",
+									"        })",
+									"        setTimeout(() => {}, 3000)",
+									"    });",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const cancelOrderResponse = pm.response.json();",
+									"console.log(cancelOrderResponse)",
+									"const findOrderByIdUrl = `${pm.environment.get('baseUrl')}/orders/${pm.globals.get('orderId')}`",
+									"",
+									"pm.test(\"cancelOrder_CorrectBody_StatusToEqual200\", () => {   ",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"cancelOrder_CorrectBody_EntityIdToBeStringAndVersionToEqual0\", () => {   ",
+									"    pm.expect(cancelOrderResponse.entityId).to.be.a('string');",
+									"    pm.expect(cancelOrderResponse.version).to.not.eql(0);    ",
+									"});",
+									"",
+									"setTimeout(() => {",
+									"    pm.sendRequest({",
+									"    url: findOrderByIdUrl,",
+									"    method: 'GET',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    }",
+									"}, (err, response) => {",
+									"    const jsonResponse = response.json()",
+									"    console.log(jsonResponse)",
+									"    const state = jsonResponse.state",
+									"    pm.test(\"cancelOrder_CorrectBody_EntityStateCancelled\",() => {",
+									"        pm.expect(state).to.eql(\"CANCELLED\");    ",
+									"    })",
+									"})",
+									"}, 3000)",
+									"/** ",
+									"*Non-CQRS requests starts here",
+									"*/",
+									"",
+									"pm.test(\"cancelOrder_CorrectBody_ToBeExpectedResponseForNonCQRS\", () => {   ",
+									"    pm.expect(cancelOrderResponse.message).to.be.a('string');",
+									"    pm.expect(cancelOrderResponse.message).to.eql('Order is cancelled');    ",
+									"});",
+									"",
+									"",
+									"",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/orders/{{orderId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/:orderId/cancel",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										":orderId",
+										"cancel"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/:orderId/cancel",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										":orderId",
+										"cancel"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/:orderId/cancel",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										":orderId",
+										"cancel"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/:orderId/cancel",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										":orderId",
+										"cancel"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/orders/:orderId/cancel",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										":orderId",
+										"cancel"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "processOrder",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const processOrderResponseJson = pm.response.json();",
+									"",
+									"pm.test(\"processOrder_CorrectBody_StatusToEqual200\", () => {   ",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"processOrder_CorrectBody_EntityIdToBeString\", () => {   ",
+									"    pm.expect(processOrderResponseJson.entityId).to.be.a('string');",
+									"});",
+									"",
+									"/** ",
+									"*Non-CQRS requests starts here",
+									"*/",
+									"",
+									"pm.test(\"processOrder_CorrectBody_ToBeExpectedResponseForNonCQRS\", () => {   ",
+									"    pm.expect(processOrderResponseJson.message).to.be.a('string');",
+									"    pm.expect(processOrderResponseJson.message).to.eql('Order is processed');    ",
+									"});",
+									"",
+									"",
+									"/* cancel order test codes not done. ",
+									"",
+									"const selectedOrderWhichPAID = () => responseJson.content.find(order => order.state === \"PAID\")",
+									"",
+									"const selectedOrder = selectedOrderWhichPAID();",
+									"",
+									"let url = `${pm.environment.get('baseUrl')}/orders/${selectedOrder.id}` // cancel order by id (it works for only paid orders)",
+									"",
+									"",
+									"pm.sendRequest({",
+									"    url,",
+									"    method: 'DELETE'",
+									"}, (err, response) => {",
+									"",
+									"    const cancelOrderResponseJson = response.json(); ",
+									"",
+									"    pm.test(\"cancelOrder_CorrectParams_StatusToEqual200\", () => {   ",
+									"        pm.expect(response.status).to.equal(200);",
+									"    });",
+									"",
+									"    pm.test(\"cancelOrder_CorrectParams_EntityIdToBeString\", () => {   ",
+									"        pm.expect(cancelOrderResponseJson.entityId).to.be.a('string');",
+									"    });",
+									"",
+									"",
+									"});",
+									"",
+									"*/"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const urlStock = `${pm.environment.get('baseUrl')}/stocks` //createStock",
+									"const urlOrder = `${pm.environment.get('baseUrl')}/orders`",
+									"",
+									"const reqBodyStock = {",
+									"    \"stockName\": \"utoy\",",
+									"    \"remainingStock\": \"100\"",
+									"}",
+									"",
+									"pm.sendRequest({",
+									"    url: urlStock,",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(reqBodyStock)",
+									"    }",
+									"}, (err, response) => {",
+									"    console.log(\"stock =>\"+response.json())",
+									"    const responseJson = response.json(); // stock control response body",
+									"    const body = {",
+									"        \"stockId\": responseJson.id,",
+									"        \"orderAmount\": \"10\",",
+									"        \"description\": \"Test3\",",
+									"        \"price\":110.0",
+									"    }",
+									"    pm.sendRequest({",
+									"    url: urlOrder,",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"            raw: JSON.stringify(body)",
+									"        }",
+									"    }, (err, response) => {",
+									"        const responseJsonOrder = response.json(); // stock control response body",
+									"        const orderId = responseJsonOrder.id",
+									"        pm.globals.set('orderId',orderId)",
+									"        const urlProcessOrder = `${pm.environment.get('baseUrl')}/orders/${orderId}/process`",
+									"        const processOrderBody = {",
+									"            \"paymentInformation\": {",
+									"                \"amount\": \"25\",",
+									"                \"paymentAddress\": \"Test\",",
+									"                \"cardInformation\": \"1111222233334444\"",
+									"            }",
+									"        }",
+									"            });",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"paymentInformation\": {\n        \"amount\": \"25\",\n        \"paymentAddress\": \"Test\",\n        \"cardInformation\": \"1111222233334444\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/orders/{{orderId}}/process",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"orders",
+								"{{orderId}}",
+								"process"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orderId\": \"<string>\",\n    \"paymentInformation\": {\n        \"amount\": \"<float>\",\n        \"paymentAddress\": \"<string>\",\n        \"cardInformation\": \"<string>\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/:orderId/process",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										":orderId",
+										"process"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orderId\": \"<string>\",\n    \"paymentInformation\": {\n        \"amount\": \"<float>\",\n        \"paymentAddress\": \"<string>\",\n        \"cardInformation\": \"<string>\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/:orderId/process",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										":orderId",
+										"process"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orderId\": \"<string>\",\n    \"paymentInformation\": {\n        \"amount\": \"<float>\",\n        \"paymentAddress\": \"<string>\",\n        \"cardInformation\": \"<string>\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/:orderId/process",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										":orderId",
+										"process"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orderId\": \"<string>\",\n    \"paymentInformation\": {\n        \"amount\": \"<float>\",\n        \"paymentAddress\": \"<string>\",\n        \"cardInformation\": \"<string>\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/:orderId/process",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										":orderId",
+										"process"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orderId\": \"<string>\",\n    \"paymentInformation\": {\n        \"amount\": \"<float>\",\n        \"paymentAddress\": \"<string>\",\n        \"cardInformation\": \"<string>\"\n    }\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/orders/:orderId/process",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"orders",
+										":orderId",
+										"process"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "payments",
+			"item": [
+				{
+					"name": "findPayments & findPaymentById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();",
+									"",
+									"pm.test(\"findPayments_CorrectParams_StatusToEqual200\", () => {   ",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"findPayments_CorrectParams_ContentToBeArray\", () => {   ",
+									"    pm.expect(responseJson.content).to.be.a('array');",
+									"});",
+									"",
+									"if(responseJson.content.length > 0){",
+									"    const selectedPayment = responseJson.content[0];",
+									"    let url = `${pm.environment.get('baseUrl')}/payments/${selectedPayment.id}` // findPaymentById",
+									"    pm.sendRequest({",
+									"        url,",
+									"        method: 'GET',",
+									"        header: {",
+									"            'Content-Type': 'application/json'",
+									"        }",
+									"    }, (err, response) => {",
+									"",
+									"        const responseJson = response.json(); // fidn stock by id response body",
+									"",
+									"        pm.test(\"findPaymentById_CorrectParams_StatusToEqual200\", () => {   ",
+									"            pm.expect(response.code).to.eql(200);",
+									"        });",
+									"",
+									"        pm.test(\"findPaymentById_CorrectParams_IdToEqualWithSelectedPayment\", () => {   ",
+									"            pm.expect(responseJson.id).to.eql(selectedPayment.id);",
+									"        });",
+									"",
+									"    });",
+									"}",
+									"",
+									"",
+									"",
+									"// wrong body example",
+									"",
+									" let url = `${pm.environment.get('baseUrl')}/payments/wrong-${Math.floor(Math.random()*100)}` // findPaymentById",
+									"    pm.sendRequest({",
+									"        url,",
+									"        method: 'GET',",
+									"        header: {",
+									"            'Content-Type': 'application/json'",
+									"        }",
+									"    }, (err, response) => {",
+									"",
+									"        const responseJson = response.json(); // find stock by id response body",
+									"",
+									"        pm.test(\"findPaymentById_WrongParams_StatusToEqual500\", () => {   ",
+									"            pm.expect(response.code).to.eql(500);",
+									"        });",
+									"",
+									"    });",
+									"",
+									"/** ",
+									"*Non-CQRS requests starts here",
+									"*/",
+									"    pm.sendRequest({",
+									"        url,",
+									"        method: 'GET',",
+									"        header: {",
+									"            'Content-Type': 'application/json'",
+									"        }",
+									"    }, (err, response) => {",
+									"",
+									"        const responseJson = response.json(); // find stock by id response body",
+									"",
+									"        pm.test(\"findPaymentById_WrongParams_StatusToEqual400ForNonCQRS\", () => {   ",
+									"            pm.expect(response.code).to.eql(400);",
+									"        });",
+									"",
+									"    });"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"const urlStock = `${pm.environment.get('baseUrl')}/stocks` //createStock\r",
+									"const urlOrder = `${pm.environment.get('baseUrl')}/orders`\r",
+									"\r",
+									"const reqBodyStock = {\r",
+									"    \"stockName\": \"utoy\",\r",
+									"    \"remainingStock\": \"100\"\r",
+									"}\r",
+									"\r",
+									"pm.sendRequest({\r",
+									"    url: urlStock,\r",
+									"    method: 'POST',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    },\r",
+									"    body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: JSON.stringify(reqBodyStock)\r",
+									"    }\r",
+									"}, (err, response) => {\r",
+									"    console.log(\"stock =>\" + response.json())\r",
+									"    const responseJson = response.json(); // stock control response body\r",
+									"    const body = {\r",
+									"        \"stockId\": responseJson.id,\r",
+									"        \"orderAmount\": \"10\",\r",
+									"        \"description\": \"Test3\",\r",
+									"        \"price\": 110.0\r",
+									"    }\r",
+									"    pm.sendRequest({\r",
+									"        url: urlOrder,\r",
+									"        method: 'POST',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        },\r",
+									"        body: {\r",
+									"            mode: 'raw',\r",
+									"            raw: JSON.stringify(body)\r",
+									"        }\r",
+									"    }, (err, response) => {\r",
+									"        const responseJsonOrder = response.json(); // stock control response body\r",
+									"        const orderId = responseJsonOrder.id\r",
+									"        pm.globals.set('orderId', orderId)\r",
+									"        const urlProcessOrder = `${pm.environment.get('baseUrl')}/orders/${orderId}/process`\r",
+									"        const processOrderBody = {\r",
+									"            \"paymentInformation\": {\r",
+									"                \"amount\": \"25\",\r",
+									"                \"paymentAddress\": \"Test\",\r",
+									"                \"cardInformation\": \"1111222233334444\"\r",
+									"            }\r",
+									"        }\r",
+									"        pm.sendRequest({\r",
+									"            url: urlProcessOrder,\r",
+									"            method: 'POST',\r",
+									"            header: {\r",
+									"                'Content-Type': 'application/json'\r",
+									"            },\r",
+									"            body: {\r",
+									"                mode: 'raw',\r",
+									"                raw: JSON.stringify(processOrderBody)\r",
+									"            }\r",
+									"        }, (err, response) => {\r",
+									"            if (err) {\r",
+									"                console.log(err)\r",
+									"            } else {\r",
+									"                console.log(response.json())\r",
+									"            }\r",
+									"        })\r",
+									"        let url = `${pm.environment.get('baseUrl')}/orders/${orderId}` // cancel order by id (it works for only paid orders)\r",
+									"        setTimeout(() => {\r",
+									"            pm.sendRequest({\r",
+									"                url,\r",
+									"                method: 'DELETE'\r",
+									"            }, (err, response) => { \r",
+									"                console.log(err)\r",
+									"                console.log(response)\r",
+									"            });\r",
+									"        }, 100)\r",
+									"    });\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"payments"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "<long>"
+								},
+								{
+									"key": "pageNumber",
+									"value": "<integer>"
+								},
+								{
+									"key": "pageSize",
+									"value": "<integer>"
+								},
+								{
+									"key": "paged",
+									"value": "<boolean>"
+								},
+								{
+									"key": "sort.sorted",
+									"value": "<boolean>"
+								},
+								{
+									"key": "sort.unsorted",
+									"value": "<boolean>"
+								},
+								{
+									"key": "unpaged",
+									"value": "<boolean>"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<long>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										},
+										{
+											"key": "pageSize",
+											"value": "<integer>"
+										},
+										{
+											"key": "paged",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.sorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.unsorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "unpaged",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<long>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										},
+										{
+											"key": "pageSize",
+											"value": "<integer>"
+										},
+										{
+											"key": "paged",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.sorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.unsorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "unpaged",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<long>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										},
+										{
+											"key": "pageSize",
+											"value": "<integer>"
+										},
+										{
+											"key": "paged",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.sorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.unsorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "unpaged",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<long>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										},
+										{
+											"key": "pageSize",
+											"value": "<integer>"
+										},
+										{
+											"key": "paged",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.sorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.unsorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "unpaged",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "returnPayment",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"const urlStock = `${pm.environment.get('baseUrl')}/stocks` //createStock\r",
+									"const urlOrder = `${pm.environment.get('baseUrl')}/orders`\r",
+									"\r",
+									"const reqBodyStock = {\r",
+									"    \"stockName\": \"utoy\",\r",
+									"    \"remainingStock\": \"100\"\r",
+									"}\r",
+									"\r",
+									"pm.sendRequest({\r",
+									"    url: urlStock,\r",
+									"    method: 'POST',\r",
+									"    header: {\r",
+									"        'Content-Type': 'application/json'\r",
+									"    },\r",
+									"    body: {\r",
+									"        mode: 'raw',\r",
+									"        raw: JSON.stringify(reqBodyStock)\r",
+									"    }\r",
+									"}, (err, response) => {\r",
+									"    console.log(\"stock =>\" + response.json())\r",
+									"    const responseJson = response.json(); // stock control response body\r",
+									"    const body = {\r",
+									"        \"stockId\": responseJson.id,\r",
+									"        \"orderAmount\": \"10\",\r",
+									"        \"description\": \"Test3\",\r",
+									"        \"price\": 110.0\r",
+									"    }\r",
+									"    pm.sendRequest({\r",
+									"        url: urlOrder,\r",
+									"        method: 'POST',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        },\r",
+									"        body: {\r",
+									"            mode: 'raw',\r",
+									"            raw: JSON.stringify(body)\r",
+									"        }\r",
+									"    }, (err, response) => {\r",
+									"        const responseJsonOrder = response.json(); // stock control response body\r",
+									"        const orderId = responseJsonOrder.id\r",
+									"        pm.globals.set('orderId', orderId)\r",
+									"        const urlProcessOrder = `${pm.environment.get('baseUrl')}/orders/${orderId}/process`\r",
+									"        const processOrderBody = {\r",
+									"            \"paymentInformation\": {\r",
+									"                \"amount\": \"25\",\r",
+									"                \"paymentAddress\": \"Test\",\r",
+									"                \"cardInformation\": \"1111222233334444\"\r",
+									"            }\r",
+									"        }\r",
+									"        pm.sendRequest({\r",
+									"            url: urlProcessOrder,\r",
+									"            method: 'POST',\r",
+									"            header: {\r",
+									"                'Content-Type': 'application/json'\r",
+									"            },\r",
+									"            body: {\r",
+									"                mode: 'raw',\r",
+									"                raw: JSON.stringify(processOrderBody)\r",
+									"            }\r",
+									"        }, (err, response) => {\r",
+									"            if (err) {\r",
+									"                console.log(err)\r",
+									"            } else {\r",
+									"                console.log(response.json())\r",
+									"            }\r",
+									"        })\r",
+									"        let url = `${pm.environment.get('baseUrl')}/orders/${orderId}` // cancel order by id (it works for only paid orders)\r",
+									"        setTimeout(() => {\r",
+									"            pm.sendRequest({\r",
+									"                url,\r",
+									"                method: 'DELETE'\r",
+									"            }, (err, response) => { \r",
+									"                console.log(err)\r",
+									"                console.log(response)\r",
+									"            });\r",
+									"        }, 100)\r",
+									"    });\r",
+									"});\r",
+									"\r",
+									"setTimeout(() => {\r",
+									"    let url = `${pm.environment.get('baseUrl')}/payments?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=` // findPayments\r",
+									"    pm.sendRequest({\r",
+									"        url,\r",
+									"        method: 'GET',\r",
+									"        header: {\r",
+									"            'Content-Type': 'application/json'\r",
+									"        }\r",
+									"    }, (err, response) => {\r",
+									"\r",
+									"        const responseJson = response.json(); // fidn stock by id response body\r",
+									"\r",
+									"        if (responseJson.content.length > 0) {\r",
+									"            var i = 0;\r",
+									"            var selectedPayment = responseJson.content[i];\r",
+									"            while (responseJson.content.length > i && selectedPayment.state !== 'PAID') {\r",
+									"                i++;\r",
+									"                var selectedPayment = responseJson.content[i];\r",
+									"            }\r",
+									"            let url = `${pm.environment.get('baseUrl')}/payments/${selectedPayment.id}` // findPaymentById\r",
+									"            pm.sendRequest({\r",
+									"                url,\r",
+									"                method: 'GET',\r",
+									"                header: {\r",
+									"                    'Content-Type': 'application/json'\r",
+									"                }\r",
+									"            }, (err, response) => {\r",
+									"\r",
+									"                const responseJson = response.json(); // fidn stock by id response body\r",
+									"                console.log(responseJson)\r",
+									"                pm.globals.set('orderId', responseJson.orderId)\r",
+									"                pm.globals.set('paymentId', responseJson.id)\r",
+									"            });\r",
+									"        }\r",
+									"    });\r",
+									"}, 1000)"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();\r",
+									"console.log(responseJson)\r",
+									"\r",
+									"pm.test(\"returnPayment_CorrectParams_StatusToEqual200\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"returnPayment_CorrectBody_PaymentStateToEqualReturnForNonCQRS\", () => {\r",
+									"    pm.expect(responseJson.state).to.eql(\"RETURN\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"returnPayment_CorrectBody_ResponseOrderHaveExpectedKeysForNonCQRS\", () => {\r",
+									"    pm.expect(responseJson).to.have.any.keys(('id'));\r",
+									"    pm.expect(responseJson).to.have.any.keys(('state'));\r",
+									"    pm.expect(responseJson).to.have.any.keys(('paymentAddress'));\r",
+									"    pm.expect(responseJson).to.have.any.keys(('orderId'));\r",
+									"    pm.expect(responseJson).to.have.any.keys(('amount'));\r",
+									"    pm.expect(responseJson).to.have.any.keys(('cardInformation'));\r",
+									"});\r",
+									"const url = `${pm.environment.get('baseUrl')}/orders/${pm.globals.get('orderId')}` // findOrderById\r",
+									"console.log(url)\r",
+									"pm.sendRequest(url, (err, response) => {\r",
+									"    const findOrderByIdResponse = response.json();\r",
+									"    console.log(findOrderByIdResponse)\r",
+									"    pm.test(\"returnPayment_CorrectBodyWith0msDelay_OrderStateToEqualReturnForNonCQRS\", () => {\r",
+									"        pm.expect(findOrderByIdResponse.state).to.eql(\"RETURNED\");\r",
+									"    });\r",
+									"\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"orderId\": \"{{orderId}}\",\n    \"paymentId\": \"{{paymentId}}\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/payments/{{paymentId}}/return",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"payments",
+								"{{paymentId}}",
+								"return"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orderId\": \"<string>\",\n    \"paymentId\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/payments/:paymentId/return",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments",
+										":paymentId",
+										"return"
+									],
+									"variable": [
+										{
+											"key": "paymentId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orderId\": \"<string>\",\n    \"paymentId\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/payments/:paymentId/return",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments",
+										":paymentId",
+										"return"
+									],
+									"variable": [
+										{
+											"key": "paymentId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orderId\": \"<string>\",\n    \"paymentId\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/payments/:paymentId/return",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments",
+										":paymentId",
+										"return"
+									],
+									"variable": [
+										{
+											"key": "paymentId"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orderId\": \"<string>\",\n    \"paymentId\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/payments/:paymentId/return",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments",
+										":paymentId",
+										"return"
+									],
+									"variable": [
+										{
+											"key": "paymentId"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"orderId\": \"<string>\",\n    \"paymentId\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/payments/:paymentId/return",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"payments",
+										":paymentId",
+										"return"
+									],
+									"variable": [
+										{
+											"key": "paymentId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "stock",
+			"item": [
+				{
+					"name": "createStock (correct body)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// pm.test(\"createStock_CorrectBody_StatusToEqual200\", () => {   ",
+									"//     pm.response.to.have.status(200);",
+									"// });",
+									"",
+									"// pm.test(\"createStock_CorrectBody_EntityIdToBeStringAndVersionToEqual1\", () => {   ",
+									"//     const responseJson = pm.response.json();",
+									"//     pm.expect(responseJson.entityId).to.be.a('string');",
+									"//     pm.expect(responseJson.version).to.eql(1);    ",
+									"// });",
+									"",
+									"// const pmResponse = pm.response.json();",
+									"// const url = `${pm.environment.get('baseUrl')}/stocks/${pmResponse.entityId}` // findStockById",
+									"",
+									"// pm.sendRequest(url, (err, response) => {",
+									"",
+									"//     const responseJson = response.json(); // stock control response body",
+									"//     const body = pm.request.body.toJSON(); // create stock request body",
+									"",
+									"//     pm.test(\"findStockById_CreatedEntityId_StatusToEqualOK\", () => {   ",
+									"//         pm.expect(response.status).to.eql('OK');",
+									"//     });",
+									"",
+									"//     pm.test(\"findStockById_CreatedEntityId_EntityStateToEqualINUSE\", () => {   ",
+									"//         pm.expect(responseJson.state).to.eql('INUSE');",
+									"//     });",
+									"",
+									"//     pm.test(\"findStockById_CreatedEntityId_StockNameToEqualSentStockName\", () => {   ",
+									"//         pm.expect(responseJson.stockName).to.eql(JSON.parse(body.raw).stockName);",
+									"//     });",
+									"",
+									"//     pm.test(\"findStockById_CreatedEntityIdWith0msDelay_RemainingStockToEqualSentRemainingStock\", () => {   ",
+									"        ",
+									"//         pm.expect(responseJson.remainingStock.toString()).to.not.eql(JSON.parse(body.raw).remainingStock);",
+									"//     });",
+									"",
+									"// });",
+									"",
+									"",
+									"// setTimeout(() => {",
+									"//     pm.sendRequest(url, (err, response) => {",
+									"//         const responseJson = response.json(); // stock control response body",
+									"//         const body = pm.request.body.toJSON(); // create stock request body",
+									"",
+									"//         pm.test(\"findStockById_CreatedEntityIdWith1000msDelay_RemainingStockToEqualSentRemainingStock\", function () {   ",
+									"//             pm.expect(responseJson.remainingStock.toString()).to.eql(JSON.parse(body.raw).remainingStock);",
+									"//         });",
+									"",
+									"//     });",
+									"// },1000)",
+									"",
+									"// Non CQRS Tests",
+									"",
+									"pm.test(\"createStock_CorrectBody_StatusToEqual200\", () => {   ",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"createStock_Correct_Response_Body_Types\", () => {",
+									"    const responseBodyJson = pm.response.json();",
+									"    pm.expect(responseBodyJson.id).to.be.a('number');",
+									"    pm.expect(responseBodyJson.stockName).to.be.a('string');",
+									"    pm.expect(responseBodyJson.remainingStock).to.be.a('number');",
+									"    pm.expect(responseBodyJson.price).to.be.a('number');",
+									"    pm.expect(responseBodyJson.state).to.be.a('string');",
+									"});",
+									"",
+									"pm.test(\"createStock_Correct_Response_Body_Values\", () => {",
+									"    const responseBodyJson = pm.response.json();",
+									"    const requestBody = pm.request.body;",
+									"    const requestBodyJson = JSON.parse(requestBody.raw)",
+									"    console.log(requestBodyJson);",
+									"    pm.expect(responseBodyJson.stockName).to.eql(requestBodyJson.stockName)",
+									"    pm.expect(responseBodyJson.remainingStock).to.eql(parseInt(requestBodyJson.remainingStock))",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"stockName\": \"utoy\",\n    \"remainingStock\": \"100\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/stocks",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stocks"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockName\": \"<string>\",\n    \"remainingStock\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockName\": \"<string>\",\n    \"remainingStock\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"create"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockName\": \"<string>\",\n    \"remainingStock\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockName\": \"<string>\",\n    \"remainingStock\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"create"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockName\": \"<string>\",\n    \"remainingStock\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"create"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "createStock (correct body by considering event sourcing)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const pmResponse = pm.response.json();",
+									"const url = `${pm.environment.get('baseUrl')}/stocks/${pmResponse.entityId}/history` //findStockHistoriesByStockId",
+									"",
+									"pm.sendRequest(url, (err, response) => {",
+									"",
+									"    const content = response.json(); // stock control response body",
+									"",
+									"    pm.test(\"findStockHistoriesByStockId_CreatedEntityId_FirstEventSuccess\", () => {   ",
+									"        pm.expect(content[0].eventType).to.eql(\"StockCreatedEvent\");",
+									"        pm.expect(content[0].eventKey.version).to.eql(0);",
+									"    });",
+									"",
+									"    pm.test(\"findStockHistoriesByStockId_CreatedEntityId_SecondEventSuccess\", () => {   ",
+									"        pm.expect(content[1].eventType).to.eql(\"StockAddedEvent\");",
+									"        pm.expect(content[1].eventKey.version).to.eql(1);",
+									"    });",
+									"",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"stockName\": \"utoy\",\n    \"remainingStock\": \"100\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/stocks",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stocks"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockName\": \"<string>\",\n    \"remainingStock\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockName\": \"<string>\",\n    \"remainingStock\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"create"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockName\": \"<string>\",\n    \"remainingStock\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"create"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockName\": \"<string>\",\n    \"remainingStock\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"create"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockName\": \"<string>\",\n    \"remainingStock\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "createStock (wrong body)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"createStock_WrongBody_StatusToEqual400\", () => {   ",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"createStock_WrongBody_MessageToBeString\", () => {   ",
+									"    const responseJson = pm.response.json();",
+									"    pm.expect(responseJson.message).to.be.a('string');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/stocks",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stocks"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockName\": \"<string>\",\n    \"remainingStock\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"create"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockName\": \"<string>\",\n    \"remainingStock\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"create"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockName\": \"<string>\",\n    \"remainingStock\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"create"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockName\": \"<string>\",\n    \"remainingStock\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"create"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockName\": \"<string>\",\n    \"remainingStock\": \"<long>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/create",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"create"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "addStock",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();",
+									"console.log(responseJson)",
+									"",
+									"pm.test(\"returnPayment_CorrectParams_StatusToEqual200\", () => {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"returnPayment_CorrectBody_PaymentStateToEqualReturnForNonCQRS\", () => {",
+									"    const requestBody = pm.request.body;",
+									"    const requestBodyJson = JSON.parse(requestBody.raw)",
+									"    const expectedRemainingStock = parseInt(pm.globals.get(\"remainingStockBeforeAddition\")) + parseInt(requestBodyJson.stockToAdd);",
+									"    pm.expect(responseJson.remainingStock).to.eql(expectedRemainingStock);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"stockToAdd\": \"<long>\",\n    \"stockId\": \"<string>\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/stock/:stockId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stock",
+								":stockId"
+							],
+							"variable": [
+								{
+									"key": "stockId",
+									"value": "<string>",
+									"description": "(Required) stockId"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Created",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockToAdd\": \"<long>\",\n    \"stockId\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/:stockId/add",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										":stockId",
+										"add"
+									],
+									"variable": [
+										{
+											"key": "stockId"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockToAdd\": \"<long>\",\n    \"stockId\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/:stockId/add",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										":stockId",
+										"add"
+									],
+									"variable": [
+										{
+											"key": "stockId"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockToAdd\": \"<long>\",\n    \"stockId\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/:stockId/add",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										":stockId",
+										"add"
+									],
+									"variable": [
+										{
+											"key": "stockId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockToAdd\": \"<long>\",\n    \"stockId\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/:stockId/add",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										":stockId",
+										"add"
+									],
+									"variable": [
+										{
+											"key": "stockId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"stockToAdd\": \"<long>\",\n    \"stockId\": \"<string>\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/stock/:stockId/add",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										":stockId",
+										"add"
+									],
+									"variable": [
+										{
+											"key": "stockId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "findStocks",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();",
+									"",
+									"pm.test(\"findStocks_CorrectParams_StatusToEqual200\", () => {   ",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"findStocks_CorrectParams_ContentToBeArray\", () => {   ",
+									"    pm.expect(responseJson.content).to.be.a('array');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stocks?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stocks"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "<long>"
+								},
+								{
+									"key": "pageNumber",
+									"value": "<integer>"
+								},
+								{
+									"key": "pageSize",
+									"value": "<integer>"
+								},
+								{
+									"key": "paged",
+									"value": "<boolean>"
+								},
+								{
+									"key": "sort.sorted",
+									"value": "<boolean>"
+								},
+								{
+									"key": "sort.unsorted",
+									"value": "<boolean>"
+								},
+								{
+									"key": "unpaged",
+									"value": "<boolean>"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<long>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										},
+										{
+											"key": "pageSize",
+											"value": "<integer>"
+										},
+										{
+											"key": "paged",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.sorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.unsorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "unpaged",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<long>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										},
+										{
+											"key": "pageSize",
+											"value": "<integer>"
+										},
+										{
+											"key": "paged",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.sorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.unsorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "unpaged",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<long>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										},
+										{
+											"key": "pageSize",
+											"value": "<integer>"
+										},
+										{
+											"key": "paged",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.sorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.unsorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "unpaged",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<long>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										},
+										{
+											"key": "pageSize",
+											"value": "<integer>"
+										},
+										{
+											"key": "paged",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.sorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.unsorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "unpaged",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "findStocks (for adding stock test)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseJson = pm.response.json();",
+									"const content = responseJson.content;",
+									"",
+									"const selectedStock = content[0]; // we selected the first stock, should we select randomly?",
+									"",
+									"const entityId = selectedStock.id",
+									"const prevRemainingStock = selectedStock.remainingStock",
+									"const prevVersion = selectedStock.version",
+									"const pmResponse = pm.response.json();",
+									"let url = `${pm.environment.get('baseUrl')}/stocks/${entityId}` // addStockById",
+									"",
+									"const stockToAdd = 100;",
+									"const reqBody = {",
+									"    stockToAdd",
+									"}",
+									"",
+									"pm.sendRequest({",
+									"    url,",
+									"    method: 'POST',",
+									"    header: {",
+									"        'Content-Type': 'application/json'",
+									"    },",
+									"    body: {",
+									"        mode: 'raw',",
+									"        raw: JSON.stringify(reqBody)",
+									"    }",
+									"}, (err, response) => {",
+									"",
+									"    const responseJson = response.json(); // stock control response body",
+									"",
+									"",
+									"    pm.test(\"addStock_CreatedEntityId_VersionToBeIncreasedOne\", () => {",
+									"        pm.expect(responseJson.version).to.eql(prevVersion + 1);",
+									"    });",
+									"",
+									"",
+									"    url = `${pm.environment.get('baseUrl')}/stocks/${entityId}` // findStockById",
+									"",
+									"    pm.sendRequest(url, (err, response) => {",
+									"",
+									"        const responseJson = response.json(); // stock control response body",
+									"",
+									"        pm.test(\"findStockById_CreatedEntityIdWith0ms_StockNotChange\", () => {",
+									"            pm.expect(responseJson.remainingStock).to.eql(prevRemainingStock);",
+									"        });",
+									"    });",
+									"",
+									"    setTimeout(() => {",
+									"        pm.sendRequest(url, (err, response) => {",
+									"",
+									"            const responseJson = response.json(); // stock control response body",
+									"",
+									"            pm.test(\"findStockById_CreatedEntityIdWith1500msDelay_StockToBeAdded\", () => {",
+									"                pm.expect(responseJson.remainingStock).to.eql(prevRemainingStock + stockToAdd);",
+									"            });",
+									"        });",
+									"",
+									"    }, 1500)",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stocks?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stocks"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "<long>"
+								},
+								{
+									"key": "pageNumber",
+									"value": "<integer>"
+								},
+								{
+									"key": "pageSize",
+									"value": "<integer>"
+								},
+								{
+									"key": "paged",
+									"value": "<boolean>"
+								},
+								{
+									"key": "sort.sorted",
+									"value": "<boolean>"
+								},
+								{
+									"key": "sort.unsorted",
+									"value": "<boolean>"
+								},
+								{
+									"key": "unpaged",
+									"value": "<boolean>"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<long>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										},
+										{
+											"key": "pageSize",
+											"value": "<integer>"
+										},
+										{
+											"key": "paged",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.sorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.unsorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "unpaged",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<long>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										},
+										{
+											"key": "pageSize",
+											"value": "<integer>"
+										},
+										{
+											"key": "paged",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.sorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.unsorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "unpaged",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<long>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										},
+										{
+											"key": "pageSize",
+											"value": "<integer>"
+										},
+										{
+											"key": "paged",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.sorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.unsorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "unpaged",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks?offset=<long>&pageNumber=<integer>&pageSize=<integer>&paged=<boolean>&sort.sorted=<boolean>&sort.unsorted=<boolean>&unpaged=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "<long>"
+										},
+										{
+											"key": "pageNumber",
+											"value": "<integer>"
+										},
+										{
+											"key": "pageSize",
+											"value": "<integer>"
+										},
+										{
+											"key": "paged",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.sorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "sort.unsorted",
+											"value": "<boolean>"
+										},
+										{
+											"key": "unpaged",
+											"value": "<boolean>"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "findStockById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Non CQRS Tests",
+									"",
+									"pm.test(\"findStock_CorrectBody_StatusToEqual200\", () => {   ",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"",
+									"pm.test(\"findStock_Correct_Response_Body_Types\", () => {",
+									"    const responseBodyJson = pm.response.json();",
+									"    pm.expect(responseBodyJson.id).to.be.a('number');",
+									"    pm.expect(responseBodyJson.stockName).to.be.a('string');",
+									"    pm.expect(responseBodyJson.remainingStock).to.be.a('number');",
+									"    pm.expect(responseBodyJson.price).to.be.a('number');",
+									"    pm.expect(responseBodyJson.state).to.be.a('string');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stocks/7f7847f8-408c-4e2e-8882-4717a0786750",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stocks",
+								"7f7847f8-408c-4e2e-8882-4717a0786750"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks/:orderId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks",
+										":orderId"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks/:orderId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks",
+										":orderId"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks/:orderId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks",
+										":orderId"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks/:orderId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks",
+										":orderId"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "findStockHistoriesByStockId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stocks/7e72c807-e68e-44e5-b701-0bd7612d7f33/history",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stocks",
+								"7e72c807-e68e-44e5-b701-0bd7612d7f33",
+								"history"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks/:orderId/history",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks",
+										":orderId",
+										"history"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks/:orderId/history",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks",
+										":orderId",
+										"history"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks/:orderId/history",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks",
+										":orderId",
+										"history"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks/:orderId/history",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks",
+										":orderId",
+										"history"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "findStockByIdAndVersion",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/stocks/:orderId/:version",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"stocks",
+								":orderId",
+								":version"
+							],
+							"variable": [
+								{
+									"key": "orderId",
+									"value": "<string>",
+									"description": "(Required) orderId"
+								},
+								{
+									"key": "version",
+									"value": "<integer>",
+									"description": "(Required) version"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks/:orderId/:version",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks",
+										":orderId",
+										":version"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										},
+										{
+											"key": "version"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "OK",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks/:orderId/:version",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks",
+										":orderId",
+										":version"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										},
+										{
+											"key": "version"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "*/*"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Not Found",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks/:orderId/:version",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks",
+										":orderId",
+										":version"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										},
+										{
+											"key": "version"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/stock/stocks/:orderId/:version",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"stock",
+										"stocks",
+										":orderId",
+										":version"
+									],
+									"variable": [
+										{
+											"key": "orderId"
+										},
+										{
+											"key": "version"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	]
+}
