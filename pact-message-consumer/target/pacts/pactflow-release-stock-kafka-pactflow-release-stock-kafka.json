@@ -1,0 +1,48 @@
+{
+  "consumer": {
+    "name": "pactflow-release-stock-kafka"
+  },
+  "provider": {
+    "name": "pactflow-release-stock-kafka"
+  },
+  "messages": [
+    {
+      "description": "release-stock",
+      "metaData": {
+        "contentType": "application/json"
+      },
+      "contents": {
+        "orderAmount": 20,
+        "stockId": "88"
+      },
+      "matchingRules": {
+        "body": {
+          "$.stockId": {
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ],
+            "combine": "AND"
+          },
+          "$.orderAmount": {
+            "matchers": [
+              {
+                "match": "ınteger"
+              }
+            ],
+            "combine": "AND"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "4.0.9"
+    }
+  }
+}

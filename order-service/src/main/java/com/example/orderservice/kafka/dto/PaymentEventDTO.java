@@ -1,16 +1,22 @@
 package com.example.orderservice.kafka.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
+import javax.validation.constraints.NotNull;
+
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PaymentEventDTO {
-    float amount;
-
-    Long orderId;
-
-    String paymentAddress;
-
-    String cardInformation;
+    @NotNull
+    private float amount;
+    @NotNull
+    private Long orderId;
+    @NotNull
+    private String paymentAddress;
+    @NotNull
+    private String cardInformation;
 }

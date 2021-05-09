@@ -1,0 +1,59 @@
+{
+  "consumer": {
+    "name": "pactflow-process-payment-kafka"
+  },
+  "provider": {
+    "name": "pactflow-process-payment-kafka"
+  },
+  "messages": [
+    {
+      "description": "process-payment",
+      "metaData": {
+        "contentType": "application/json"
+      },
+      "contents": {
+        "paymentInformation": {
+          "paymentAddress": "paymentAddress",
+          "amount": 50,
+          "cardInformation": "1111222233334444"
+        }
+      },
+      "matchingRules": {
+        "body": {
+          "$.paymentInformation.amount": {
+            "matchers": [
+              {
+                "match": "decımal"
+              }
+            ],
+            "combine": "AND"
+          },
+          "$.paymentInformation.cardInformation": {
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ],
+            "combine": "AND"
+          },
+          "$.paymentInformation.paymentAddress": {
+            "matchers": [
+              {
+                "match": "type"
+              }
+            ],
+            "combine": "AND"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "4.0.9"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "consumer": {
+    "name": "pactflow-success-payment-kafka"
+  },
+  "provider": {
+    "name": "pactflow-success-payment-kafka"
+  },
+  "messages": [
+    {
+      "description": "success-payment",
+      "metaData": {
+        "contentType": "application/json"
+      },
+      "contents": {}
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "4.0.9"
+    }
+  }
+}

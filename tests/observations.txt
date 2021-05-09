@@ -1,3 +1,5 @@
+--api-tests--
+
 -entity ids that comes with eventsourcing are changed with actual entities.
 -there is no need for delay in requests' tests anymore.
 -there is an implicit check mechanism in event sourcing for the createOrder endpoint
@@ -5,3 +7,14 @@
 consistency of event sourcing.
 -although some delay exists for the requests contains kafka , it is so small compare to delay in ES that can be
 neglected.
+
+
+--integration tests--
+-with the absence of event sourcing , we don't have to test kafka contracts of create operations since they are done by JPA
+repositories
+    - For CQRS , commands are event (kafka topic).
+-Since there is no event sourcing framework in non-CQRS project, we do not need to implement another method to see how
+messages are consumed. Because event sourcing hides the kafka details from outside.
+
+
+--implementation and performance difference--
