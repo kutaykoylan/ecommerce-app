@@ -2,7 +2,6 @@
 
 -entity ids that comes with eventsourcing are changed with actual entities.
 -there is no need for delay in requests' tests anymore.
--there is an implicit check mechanism in event sourcing for the createOrder endpoint
 -version,history that comes with event sourcing is not used anymore because those variables ensures the eventual
 consistency of event sourcing.
 -although some delay exists for the requests contains kafka , it is so small compare to delay in ES that can be
@@ -18,3 +17,10 @@ messages are consumed. Because event sourcing hides the kafka details from outsi
 
 
 --implementation and performance difference--
+-Because of slowness of the event sourcing, delay for some of the responses are really high.So, we can basically say that
+if we are looking for a performance, CQRS with ES is not the best option for us.
+-Also, the complexity of the code that comes with event sourcing makes project harder to code and understand
+-Since we need to use a framework for event sourcing, our project is highly coupled to event sourcing framework. the behaviour
+and the potential inconsistencies of the framework affects the behaviour of the project.
+- Altough there are alot of negativities, if the eventual consistency is the one of our significant concerns 
+CQRS with ES is the best option
