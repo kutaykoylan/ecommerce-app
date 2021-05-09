@@ -28,7 +28,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@PactFolder("../pact-message-consumer/target/pacts")
+@PactFolder("src/test/resources/pact-message-consumer/target/pacts")
 @ExtendWith(PactConsumerTestExt.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @PactTestFor(providerName = "pactflow-success-payment-kafka", providerType = ProviderType.ASYNCH)
