@@ -23,7 +23,7 @@
           "$.paymentInformation.amount": {
             "matchers": [
               {
-                "match": "decımal"
+                "match": "decimal"
               }
             ],
             "combine": "AND"

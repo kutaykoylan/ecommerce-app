@@ -11,30 +11,7 @@
       "metaData": {
         "contentType": "application/json"
       },
-      "contents": {
-        "orderAmount": 20,
-        "stockId": "88"
-      },
-      "matchingRules": {
-        "body": {
-          "$.stockId": {
-            "matchers": [
-              {
-                "match": "type"
-              }
-            ],
-            "combine": "AND"
-          },
-          "$.orderAmount": {
-            "matchers": [
-              {
-                "match": "ınteger"
-              }
-            ],
-            "combine": "AND"
-          }
-        }
-      }
+      "contents": {}
     }
   ],
   "metadata": {

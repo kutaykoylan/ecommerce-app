@@ -34,6 +34,7 @@ public class PaymentConsumerService {
         PaymentEventDTO successfulPaymentEventDTO = PaymentEventDTO.builder()
                 .paymentAddress(processPaymentDTO.getPaymentInformation().getPaymentAddress())
                 .orderId(processPaymentDTO.getOrderId())
+                .cardInformation(processPaymentDTO.getPaymentInformation().getCardInformation())
                 .build();
         if(processPaymentDTO.getPaymentInformation().getAmount()>2000)
             throw new PaymentException("Payment amount cannot be more than 2000");

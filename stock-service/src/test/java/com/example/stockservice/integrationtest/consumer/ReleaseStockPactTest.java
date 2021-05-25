@@ -35,7 +35,7 @@ public class ReleaseStockPactTest {
     MessagePact releaseStockValidMessage(MessagePactBuilder builder) {
         PactDslJsonBody body = new PactDslJsonBody();
 
-        body.stringType("stockId", "88")
+        body.stringType("stockId", "34")
                 .integerType("orderAmount",20);
 
 
